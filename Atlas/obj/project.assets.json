@@ -2592,11 +2592,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Source\\Repos\\Atlasv666\\Atlas\\Atlas.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj",
       "projectName": "Atlas",
-      "projectPath": "C:\\Users\\DELL\\Source\\Repos\\Atlasv666\\Atlas\\Atlas.csproj",
+      "projectPath": "C:\\Users\\DELL\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Source\\Repos\\Atlasv666\\Atlas\\obj\\",
+      "outputPath": "C:\\Users\\DELL\\Source\\Repos\\AtlasProject\\Atlas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",

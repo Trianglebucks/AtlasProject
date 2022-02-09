@@ -24,32 +24,40 @@ namespace Atlas.Pages
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
-            using (DataContext context = new DataContext())
+            var result = MessageBox.Show("Save changes?", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
             {
-                var _productName = productName.Text;
-                var _measurement = measurement.Text;
-                var _color = color.Text;
-                var _price = price.Text;
-                var _category = category.Text;
-                var _stocks = stocks.Text;
-                var _brand = brand.Text;
-                if (productName.Text != null && measurement.Text != null && color.Text != null && 
-                    price.Text != null && category.Text != null && stocks.Text != null && brand.Text != null)
+                using (DataContext context = new DataContext())
                 {
+                    var _productName = productName.Text;
+                    var _measurement = measurement.Text;
+                    var _color = color.Text;
+                    var _price = price.Text;
+                    var _category = category.Text;
+                    var _stocks = stocks.Text;
+                    var _brand = brand.Text;
+                    if (productName.Text != null && measurement.Text != null && color.Text != null &&
+                        price.Text != null && category.Text != null && stocks.Text != null && brand.Text != null)
+                    {
 
-                    CSProduct product = context.Products.Find(Inventory.ID);
-                    product.ProductName = _productName;
-                    product.Brand = _brand;
-                    product.Measurement = _measurement;
-                    product.Color = _color;
-                    product.Price =  float.Parse( _price);
-                    product.Category = _category;
-                    product.Stocks = int.Parse( _stocks);
-                    context.SaveChanges();
+                        CSProduct product = context.Products.Find(Inventory.ID);
+                        product.ProductName = _productName;
+                        product.Brand = _brand;
+                        product.Measurement = _measurement;
+                        product.Color = _color;
+                        product.Price = float.Parse(_price);
+                        product.Category = _category;
+                        product.Stocks = int.Parse(_stocks);
+                        context.SaveChanges();
+                    }
                 }
-                
-
+                MessageBox.Show("Saved!");
             }
+            else if(result == MessageBoxResult.No)
+            {
+                Read();
+            }
+            
 
         }
         private void Read()
@@ -65,11 +73,7 @@ namespace Atlas.Pages
                 price.Text = product.Price.ToString();
                 category.Text = product.Category;
                 stocks.Text = product.Stocks.ToString();
-
-
-
             }
-
         }
     }
 }

@@ -133,7 +133,9 @@
             HorizontalAlignment="Left" Margin="581,444,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="141" Click="cancel_btn_Click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
         <Label Content="Selected Customer:" HorizontalAlignment="Left" Margin="29,60,0,0" VerticalAlignment="Top" Height="26" Width="109" RenderTransformOrigin="0.229,0.276"/>
         <Label x:Name="sel_Customerlbl" Content="" HorizontalAlignment="Left" Margin="143,60,0,0" VerticalAlignment="Top" Height="26" Width="109" RenderTransformOrigin="0.229,0.276"/>
-
-
+        <Button x:Name="remove_item" Content="Remove Item" 
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            materialDesign:ButtonAssist.CornerRadius="20"
+            HorizontalAlignment="Left" Margin="143,385,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="143" Click="remove_item_Click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
     </Grid>
 </Page>
