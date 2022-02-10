@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj": {}
+    "C:\\Users\\DELL\\Source\\Repos\\AtlasProjectv2\\Atlas\\Atlas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj": {
+    "C:\\Users\\DELL\\Source\\Repos\\AtlasProjectv2\\Atlas\\Atlas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\Source\\Repos\\AtlasProjectv2\\Atlas\\Atlas.csproj",
         "projectName": "Atlas",
-        "projectPath": "C:\\Users\\DELL\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj",
+        "projectPath": "C:\\Users\\DELL\\Source\\Repos\\AtlasProjectv2\\Atlas\\Atlas.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\Source\\Repos\\AtlasProject\\Atlas\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\Source\\Repos\\AtlasProjectv2\\Atlas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Atlas.Pages"
+      xmlns:local="clr-namespace:Atlas.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="854"
       Title="Delivery_Item_List">
@@ -19,6 +19,10 @@
         <Border Height="450" VerticalAlignment="Top" 
                 CornerRadius="0 0 250 0" 
                 Background="White" HorizontalAlignment="Stretch">
+            
+            <Button Margin="581,164,208,254" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Click="invoice_click">
+                <materialDesign:PackIcon Kind="Invoice" />
+            </Button>
         </Border>
 
         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" Text="Customer Information" 

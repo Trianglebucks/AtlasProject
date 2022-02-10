@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R35BNIKXYB0DEVh3ilVEyjtkwZG/sgdYlHlCP98Xik8g8kI7RS9uiR/k9Mgh4yQ/zH05u99GvOfK51VA+4LGEA==",
+  "dgSpecHash": "Ai+yphkEtAGyD9LTfzQSxPx1MTywJmpH6AXiKBqkUv+XEbutrSOUkUZ1vpgjxUT+BbsI5kVgQ3+hGeZStMkFFw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\DELL\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj",
+  "projectFilePath": "C:\\Users\\DELL\\Source\\Repos\\AtlasProjectv2\\Atlas\\Atlas.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DELL\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\DELL\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",

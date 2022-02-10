@@ -79,5 +79,28 @@ namespace Atlas.Pages
         {
 
         }
+
+        private void invoice_click(object sender, RoutedEventArgs e)
+        {
+            using (DataContext context = new DataContext())
+            {
+                CSCustomer cSCustomer = context.Customers.Find(Delivery.CustomerID);
+                Invoice popup = new Invoice();
+                popup.cust_name.Text = cSCustomer.CustomerName;
+                popup.date_issued.Text = Delivery.OrderDate;
+                popup.tracking_no.Text = Delivery.TrackingNumber.ToString();
+                var TrackingNum = Delivery.TrackingNumber;
+
+                popup.cust_address.Text = cSCustomer.Address;
+                popup.cust_connum.Text = cSCustomer.ContactNumber;
+
+                var invoice_items = context.Invoiceitems.FromSqlRaw("SELECT Brand, Quantity, UnitPrice, TotPrice FROM Orderitems as o JOIN Products as p on o.ProductID = p.ID AND TrackingNumber = {0}", TrackingNum).ToList();
+                popup.Invoice_list.ItemsSource = invoice_items;
+
+                var totalamt = context.Deliveries.Single(b => b.TrackingNumber == TrackingNum);
+                popup.total_amount.Text = '₱' + totalamt.Amount.ToString();
+                popup.ShowDialog();
+            }
+        }
     }
 }

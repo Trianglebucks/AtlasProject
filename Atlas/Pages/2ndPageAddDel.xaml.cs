@@ -64,69 +64,96 @@ namespace Atlas.Pages
         private void add_btn_Click(object sender, RoutedEventArgs e)
         {
             //Create();
-            Random rnd = new Random();
-            int TrackingNum = rnd.Next(100000, 199999);
-
-            using (DataContext context = new DataContext())
+            var result = MessageBox.Show("Confirm Order?", "Confirmation", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
             {
-                if (initial_Order.HasItems)
+                Random rnd = new Random();
+                int TrackingNum = rnd.Next(100000, 199999);
+
+                using (DataContext context = new DataContext())
                 {
-                    var finOrder = iniitem.ToList();
-
-                    int custQuantity = 0;
-                    float custTotal = 0;
-
-                    foreach (var eachorder in finOrder)
+                    if (initial_Order.HasItems)
                     {
-                        var finalID = int.Parse(eachorder.ProductID.ToString());
-                        var finalQuan = int.Parse(eachorder.Quantity.ToString());
-                        var finalpri = float.Parse(eachorder.Price.ToString());
-                        var finaltot = float.Parse(eachorder.Total.ToString());
+                        var finOrder = iniitem.ToList();
 
-                        context.Orderitems.Add(new CSOrderitems()
+                        int custQuantity = 0;
+                        float custTotal = 0;
+
+                        foreach (var eachorder in finOrder)
+                        {
+                            var finalID = int.Parse(eachorder.ProductID.ToString());
+                            var finalQuan = int.Parse(eachorder.Quantity.ToString());
+                            var finalpri = float.Parse(eachorder.Price.ToString());
+                            var finaltot = float.Parse(eachorder.Total.ToString());
+
+                            context.Orderitems.Add(new CSOrderitems()
+                            {
+                                TrackingNumber = TrackingNum,
+                                ProductID = finalID,
+                                Quantity = finalQuan,
+                                UnitPrice = finalpri,
+                                TotPrice = finaltot
+                            });
+
+                            custQuantity += finalQuan;
+                            custTotal += finaltot;
+
+
+                        }
+                        foreach (var item in finOrder)
+                        {
+                            iniitem.Remove(item);
+                        }
+                        DateTime date = DateTime.Now;
+                        CultureInfo ci = CultureInfo.InvariantCulture;
+
+                        var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
+                        var customerid = AddDelivery.selectedCus.ID;
+                        var custaddress = AddDelivery.selectedCus.Address;
+                        var custconnum = AddDelivery.selectedCus.ContactNumber;
+                        var customername = AddDelivery.selectedCus.CustomerName;
+
+                        context.Deliveries.Add(new CSDelivery()
                         {
                             TrackingNumber = TrackingNum,
-                            ProductID = finalID,
-                            Quantity = finalQuan,
-                            UnitPrice = finalpri,
-                            TotPrice = finaltot
+                            CustomerID = customerid,
+                            Address = custaddress,
+                            Amount = custTotal,
+                            Quantity = custQuantity,
+                            OrderDate = orderdate
+
                         });
 
-                        custQuantity += finalQuan;
-                        custTotal += finaltot;
+                        context.SaveChanges();
+                        MessageBox.Show("Done!");
+                        Read();
+
+                        //Shows invoice
+                        Invoice popup = new Invoice();
+                        popup.cust_name.Text = customername;
+                        popup.date_issued.Text = orderdate;
+                        popup.tracking_no.Text = TrackingNum.ToString();
+                        popup.cust_address.Text = custaddress;
+                        popup.cust_connum.Text = custconnum;
+                        var invoice_items = context.Invoiceitems.FromSqlRaw("SELECT Brand, Quantity, UnitPrice, TotPrice FROM Orderitems as o JOIN Products as p on o.ProductID = p.ID AND TrackingNumber = {0}", TrackingNum).ToList();
+                        popup.Invoice_list.ItemsSource = invoice_items;
+                        var totalamt = context.Deliveries.Single(b => b.TrackingNumber == TrackingNum);
 
 
+                        popup.total_amount.Text = '₱' + totalamt.Amount.ToString();
+                        popup.ShowDialog();
                     }
-                    foreach (var item in finOrder)
-                    {
-                        iniitem.Remove(item);
-                    }
-                    DateTime date = DateTime.Now;
-                    CultureInfo ci = CultureInfo.InvariantCulture;
+                    else
+                        MessageBox.Show("No products to add!");
 
-                    var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
-                    var customerid = AddDelivery.selectedCus.ID;
-                    var custaddress = AddDelivery.selectedCus.Address;
-
-
-                    context.Deliveries.Add(new CSDelivery()
-                    {
-                        TrackingNumber = TrackingNum,
-                        CustomerID = customerid,
-                        Address = custaddress,
-                        Amount = custTotal,
-                        Quantity = custQuantity,
-                        OrderDate = orderdate
-
-                    });
-
-                    context.SaveChanges();
-                    MessageBox.Show("Done!");
-                    Read();
                 }
-                else
-                    MessageBox.Show("No products to add!");
+               
             }
+            else if (result == MessageBoxResult.No)
+            {
+                Read();
+            }
+ 
 
 
         }
@@ -235,6 +262,7 @@ namespace Atlas.Pages
                                 }
                                 Read();
 
+                               
 
                             }
                             else if (selProduct.Stocks == 0)
