@@ -5,6 +5,8 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
 using System;
+using Microsoft.EntityFrameworkCore;
+using Atlas.Model_Classes;
 
 namespace Atlas.Pages
 {
@@ -103,7 +105,9 @@ namespace Atlas.Pages
                     if (result == MessageBoxResult.Yes)
                     {
                         CSDelivery delOrder = delivery_list.SelectedItem as CSDelivery;
+                        CSOrderitems sOrderItems = delivery_list.SelectedItem as CSOrderitems;
 
+                            
                         context.Remove(delOrder);
                         context.SaveChanges();
                         Read();
@@ -115,6 +119,18 @@ namespace Atlas.Pages
                         Read();
                     }              
             }
-        }        
+        }
+
+        private void search_btn_Click(object sender, RoutedEventArgs e)
+        {
+            using (DataContext context = new DataContext())
+            {
+                var trackingNumber = SearchBar.Text;
+                if (String.IsNullOrEmpty(trackingNumber))
+                    delivery_list.ItemsSource = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();
+                else
+                    delivery_list.ItemsSource = context.Deliveries.FromSqlRaw("SELECT * FROM Deliveries WHERE TrackingNumber = {0}", trackingNumber).ToList();
+            }
+        }
     }
 }

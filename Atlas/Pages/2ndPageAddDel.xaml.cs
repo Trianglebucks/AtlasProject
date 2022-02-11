@@ -164,7 +164,7 @@ namespace Atlas.Pages
             orderBtn(sender);
             try
             {
-                totalamount.Text = Convert.ToString(Price * float.Parse(quantityValue.Text));
+                totalamount.Text = Price.ToString();
             }
             catch (Exception)
             {
@@ -226,7 +226,7 @@ namespace Atlas.Pages
                             var prodid = int.Parse(selProduct.ID.ToString());
 
                             var iniTotal = quantityval * uprice;
-                            Price = selProduct.Price;
+                            Price += iniTotal;
 
 
                             var id = selProduct.ID;

@@ -56,8 +56,9 @@ namespace Atlas.Pages
         {
             using (DataContext context = new DataContext())
             {
-                var totalsales = context.Orderitems.Sum(t => t.TotPrice);
-                salesCount.Content = totalsales.ToString();
+                var totalsales = context.Deliveries.Sum(t => t.Amount);
+                
+                salesCount.Text = totalsales.ToString("#,##0.##");
             }
         }
 

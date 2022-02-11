@@ -34,6 +34,8 @@ namespace Atlas.Pages
         {
             InitializeComponent();
             Read();
+            sortAvailability.Text = "All";
+            Category_Cmbox.Text = "All";
         }
         public DataTemplate ItemTemplate { get; set; }
 
@@ -144,16 +146,22 @@ namespace Atlas.Pages
             string strCategory = category.Content.ToString();
             SearchField.Text = String.Empty;
             var db = new DataContext();
-
-            inventory_list.ItemsSource = db.Products.FromSqlRaw("Select * from Products where Category = {0}", strCategory).ToList();           
+            if(strCategory == "All")
+            {
+                Read();
+            }
+            else
+                inventory_list.ItemsSource = db.Products.FromSqlRaw("Select * from Products where Category = {0}", strCategory).ToList();
         }
 
         private void change_availability(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem category = (ComboBoxItem)sortAvailability.SelectedItem;
+           
             string strCategory = category.Content.ToString();
             var noStock = 0;
             var db = new DataContext();
+
             if (strCategory == "Available")
             {
                 inventory_list.ItemsSource = db.Products.FromSqlRaw("Select * from Products where Stocks > {0}", noStock).ToList();

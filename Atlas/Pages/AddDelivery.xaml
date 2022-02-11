@@ -14,7 +14,7 @@
             <Setter Property="HorizontalContentAlignment" Value="Center" />
         </Style>
     </Page.Resources>
-    
+
     <Grid>
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
@@ -30,9 +30,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="80,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="25" FontWeight="Normal" FontFamily="Segoe UI" Width="258" Height="43"><Run Text="Choose a customer"/><LineBreak/><Run/></TextBlock>
         <!--<Grid HorizontalAlignment="Left" Height="102" Margin="80,123,0,0" VerticalAlignment="Top" Width="653">
             <Label Content="Product:" HorizontalAlignment="Left" Margin="398,1,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>-->
-            <!--<Label Content="Total Amount:" HorizontalAlignment="Left" Margin="398,35,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
+        <!--<Label Content="Total Amount:" HorizontalAlignment="Left" Margin="398,35,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
             <Label Content="Total No. of Items:" HorizontalAlignment="Left" Margin="399,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>-->
-            <!--<TextBox x:Name="amount" HorizontalAlignment="Left" Margin="505,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
+        <!--<TextBox x:Name="amount" HorizontalAlignment="Left" Margin="505,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
             <TextBox x:Name="quantity" HorizontalAlignment="Left" Margin="533,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
             <TextBox x:Name="product" HorizontalAlignment="Left" Margin="465,-2,0,0" VerticalAlignment="Top" Width="176"/>
         </Grid>-->
@@ -45,7 +45,7 @@
             </Button.Background>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="108,77,0,0" Text="Customer List" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="20" FontWeight="Bold" FontFamily="Segoe UI"/>
-        <ListView x:Name="customer_list" Margin="101,123,427,0" 
+        <ListView x:Name="customer_list" Margin="101,123,249,0" 
             SnapsToDevicePixels="True"
             VerticalAlignment="Top" 
             HorizontalContentAlignment="Left"
@@ -68,6 +68,8 @@
                         DisplayMemberBinding="{Binding CustomerName}"/>
                     <GridViewColumn Header="Address" Width="150"
                         DisplayMemberBinding="{Binding Address}"/>
+                    <GridViewColumn Header="Contact Number" Width="150"
+                        DisplayMemberBinding="{Binding ContactNumber}"/>
                 </GridView>
             </ListView.View>
         </ListView>

@@ -14,7 +14,7 @@
             <StackPanel Margin="253,31,353,385" Orientation="Horizontal">
 
                 <TextBox x:Name="SearchBar" TextChanged="SearchBar_TextChanged" TextWrapping="Wrap" Width="183" Height="30" Margin="-1,0,0,0" CaretBrush="#FF1569B7" SelectionBrush="#FF5BAAF3" AcceptsReturn="True" AutomationProperties.Name="Search" BorderBrush="#FF1264B1"/>
-                <Button x:Name="search_btn" Width="49" Margin="0,0,3,0" BorderBrush="#FF1264B1" Foreground="#FF1569B7">
+                <Button x:Name="search_btn" Width="49" Margin="0,0,3,0" BorderBrush="#FF1264B1" Foreground="#FF1569B7" Click="search_btn_Click">
                     <Button.Background>
                         <ImageBrush Stretch="Uniform" ImageSource="/images/search.png"/>
                     </Button.Background>

@@ -37,7 +37,7 @@
                     <Image Height="45" Width="40" Source="/images/peso.png" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,13,0,0"/>
                 </StackPanel>
                 <Label Content="Sales" Height="27" VerticalAlignment="Center" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="57,41,0,0"/>
-                <Label x:Name="salesCount" Content="0" HorizontalAlignment="Left" Margin="-30,9,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24"/>
+                <TextBlock x:Name="salesCount" Text="0" TextAlignment="Center" Margin="-80,9,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Width="115"/>
             </StackPanel>
 
             <StackPanel Margin="106,285,427,175">

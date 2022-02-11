@@ -34,7 +34,8 @@
                     </Button>
                 </StackPanel>
 
-                <ComboBox x:Name="Category_Cmbox" Width="236" Height="29" Text="Category" Margin="242,33,0,27" AutomationProperties.Name="Category" BorderBrush="#FF1264B1" SelectionChanged="Category_Cmbox_SelectionChanged">
+                <ComboBox x:Name="Category_Cmbox" Width="236" Height="29" Margin="242,33,0,27" AutomationProperties.Name="Category" BorderBrush="#FF1264B1" SelectionChanged="Category_Cmbox_SelectionChanged">
+                    <ComboBoxItem Content="All"/>
                     <ComboBoxItem Content="Art Materials"/>
                     <ComboBoxItem Content="Books"/>
                     <ComboBoxItem Content="School Supplies"/>
