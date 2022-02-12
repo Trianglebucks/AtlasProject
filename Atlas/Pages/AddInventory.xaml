@@ -20,7 +20,7 @@
         <Border 
                 CornerRadius="0 250 0 150" 
                 Background="White" Margin="0,25,0,38">
-            <TextBox x:Name="brand" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC" Margin="561,218,0,0"/>
+
         </Border>
 
         <TextBlock HorizontalAlignment="Left" Margin="29,57,0,0" Text="Inventory/ Add Item" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF020527" FontSize="25" FontWeight="Normal" FontFamily="Segoe UI"/>
@@ -41,6 +41,7 @@
             <ComboBoxItem Content="Stationary Items"/>
         </ComboBox>
         <TextBox x:Name="stocks" HorizontalAlignment="Left" Margin="562,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="brand" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC" Margin="556,238,0,0"/>
         <!--<TextBox HorizontalAlignment="Left" Margin="575,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC" Grid.ColumnSpan="2"/>-->
         <Button x:Name="add_btn" Content="Add Item" 
                 Style="{StaticResource MaterialDesignRaisedButton}"

@@ -82,7 +82,7 @@ namespace Atlas.Pages
                     //color = product.Color;
                     //category = product.Category;
                     //stocks = product.Stocks;
-
+                    
                     EditInventory gotopage = new EditInventory();
                     this.NavigationService.Navigate(gotopage);
                 }
@@ -100,25 +100,27 @@ namespace Atlas.Pages
         {
             
             var db = new DataContext();
-            inventory_list.ItemsSource = db.Products.FromSqlRaw("Select * from Products").ToList();
+            inventory_list.ItemsSource = db.Products.FromSqlRaw("Select * from Products ORDER BY ProductName").ToList();
             
         }
 
         private void search_btn_Click(object sender, RoutedEventArgs e)
-        {         
-            if (!String.IsNullOrEmpty(SearchField.Text) && Category_Cmbox.SelectedIndex > -1)
+        {
+            /*if (!String.IsNullOrEmpty(SearchField.Text) && Category_Cmbox.SelectedIndex > -1)*/
+            if (!String.IsNullOrEmpty(SearchField.Text))
             {
                 using (DataContext context = new DataContext())
                 {
                     //MessageBox.Show("Hello 1");
-                    var input = SearchField.Text + "%";
-                    ComboBoxItem combCategory = (ComboBoxItem)Category_Cmbox.SelectedItem;
-                    string category = combCategory.Content.ToString();
-                    //MessageBox.Show(input + category);
-                    inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Category = {1}", input, category).ToList();                 
+                    var input = "'%"+SearchField.Text.ToString()+"%'";
+                    /*ComboBoxItem combCategory = (ComboBoxItem)Category_Cmbox.SelectedItem;
+                    string category = combCategory.Content.ToString();*/
+                    //MessageBox.Show(input);
+                    //inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Category = {1}", input, category).ToList();
+                    inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like "+input).ToList();
                 }
             }
-            else if(!String.IsNullOrEmpty(SearchField.Text) && Category_Cmbox.SelectedIndex == -1)
+            /*else if(!String.IsNullOrEmpty(SearchField.Text) && Category_Cmbox.SelectedIndex == -1)
             {
                 using (DataContext context = new DataContext())
                 {
@@ -129,7 +131,7 @@ namespace Atlas.Pages
                     //MessageBox.Show(input);
                     inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0}", input).ToList();
                 }
-            }
+            }*/
             else
             {
                 using (DataContext context = new DataContext())

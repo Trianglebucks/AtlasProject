@@ -19,11 +19,11 @@ namespace Atlas.Pages
 
         public List<CSDelivery> deliveries { get; private set; }
         public static int TrackingNumber;
-        public static int CustomerID;
+        public static int CustomerID;       
         public static string Address;
         public static int Quantity;
         public static float Total;
-        public static string OrderDate;
+        public static string OrderDate;      
 
         public Delivery()
         {
@@ -45,11 +45,10 @@ namespace Atlas.Pages
         {
             using (DataContext context = new DataContext())
             {
-                //deliveries = context.Deliveries.ToList();
-                deliveries = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();
-
+                //deliveries = context.Deliveries.ToList();               
+                deliveries = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();              
                 if (deliveries.Count > 0)
-                    delivery_list.ItemsSource = deliveries;
+                    delivery_list.ItemsSource = deliveries;                
             }
         }
 
@@ -86,10 +85,6 @@ namespace Atlas.Pages
         {
             Customer gotopage = new Customer();
             this.NavigationService.Navigate(gotopage);
-        }
-        private void edit_btn_click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void delivery_list_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

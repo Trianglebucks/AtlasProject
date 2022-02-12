@@ -27,6 +27,7 @@ namespace Atlas.Pages
                 CSCustomer cSCustomer = context.Customers.Find(Delivery.CustomerID);
                 customerName.Content = cSCustomer.CustomerName;
                 customerAddress.Content = cSCustomer.Address;
+                contactNumber.Content = cSCustomer.ContactNumber;
                 quantity.Text = Delivery.Quantity.ToString();
                 total.Text = "P" + Delivery.Total.ToString();
                 trackingNumber.Content = Delivery.TrackingNumber;
@@ -98,7 +99,7 @@ namespace Atlas.Pages
                 popup.Invoice_list.ItemsSource = invoice_items;
 
                 var totalamt = context.Deliveries.Single(b => b.TrackingNumber == TrackingNum);
-                popup.total_amount.Text = '₱' + totalamt.Amount.ToString();
+                popup.total_amount.Text = '₱' + totalamt.Amount.ToString("n2");
                 popup.ShowDialog();
             }
         }

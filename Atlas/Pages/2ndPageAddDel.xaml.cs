@@ -26,6 +26,7 @@ namespace Atlas.Pages
     public partial class _2ndPageAddDel : Page
     {
         private static float Price;
+        //private static float iniTotal;
 
         ObservableCollection<iniOrder> iniitem = new ObservableCollection<iniOrder>();
 
@@ -102,7 +103,7 @@ namespace Atlas.Pages
                         }
                         foreach (var item in finOrder)
                         {
-                            iniitem.Remove(item);
+                            iniitem.Remove(item);                                                        
                         }
                         DateTime date = DateTime.Now;
                         CultureInfo ci = CultureInfo.InvariantCulture;
@@ -125,8 +126,10 @@ namespace Atlas.Pages
                         });
 
                         context.SaveChanges();
-                        MessageBox.Show("Done!");
+                       // MessageBox.Show("Done!");
                         Read();
+                        Price = 0;
+                        totalamount.Text = Price.ToString();
 
                         //Shows invoice
                         Invoice popup = new Invoice();
@@ -139,75 +142,77 @@ namespace Atlas.Pages
                         popup.Invoice_list.ItemsSource = invoice_items;
                         var totalamt = context.Deliveries.Single(b => b.TrackingNumber == TrackingNum);
 
-
-                        popup.total_amount.Text = '₱' + totalamt.Amount.ToString();
+                        popup.total_amount.Text = '₱' + totalamt.Amount.ToString("n2");
                         popup.ShowDialog();
+                        
                     }
                     else
+                    {                        
+                        totalamount.Text = Price.ToString();
                         MessageBox.Show("No products to add!");
-
-                }
-               
+                    }                  
+                }               
             }
             else if (result == MessageBoxResult.No)
-            {
+            {                
                 Read();
             }
- 
-
-
         }
-
 
         private void btn_Order_Click(object sender, RoutedEventArgs e)
         {
-            orderBtn(sender);
+            
             try
             {
-                totalamount.Text = Price.ToString();
+                orderBtn(sender);
+
             }
             catch (Exception)
             {
-            }
 
+                MessageBox.Show("error!");
+            }
         }
 
         //removes selected item
         private void remove_item_Click(object sender, RoutedEventArgs e)
         {
-            var result = MessageBox.Show("Remove Item", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
-            if (result == MessageBoxResult.Yes)
+            if (initial_Order.SelectedItems.Count > 0)
             {
+                var result = MessageBox.Show("Remove Item", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+                       
+            
+                if (result == MessageBoxResult.Yes)
+                {
                 var remove_sel_item = (iniOrder)initial_Order.SelectedItems[0];
                 using (DataContext context = new DataContext())
                 {
                     var cancelOrderQuantity = remove_sel_item.Quantity;
                     var productUpdate = context.Products.Single(b => b.ID == remove_sel_item.ProductID);
                     productUpdate.Stocks += cancelOrderQuantity;
-                    context.Products.Update(productUpdate);
+                    context.Products.Update(productUpdate);                    
                     iniitem.Remove(remove_sel_item);
                     context.SaveChanges();
                 }
-                MessageBox.Show("Item removed!");
+                    //MessageBox.Show("Item removed!");
+                    Price -= remove_sel_item.Total;
+                    totalamount.Text = Price.ToString("n2");
+                Read();                  
+                }
+                else if (result == MessageBoxResult.No)
                 Read();
             }
-            else if (result == MessageBoxResult.No)
-            {
-                Read();
-            }
-            
+            else MessageBox.Show("Select an item to be remove.");
+
         }
 
         //For initial orders
         private void orderBtn(object sender)
         {
-
             try
             {
                 CSProduct selProduct = (CSProduct)inventory_list.SelectedItems[0];
                 Button targetbutton = (sender as Button);
-
-
 
                 if (targetbutton != null && targetbutton.Name == "btn_Order")
                 {
@@ -215,16 +220,11 @@ namespace Atlas.Pages
                     {
                         using (DataContext context = new DataContext())
                         {
-
-
                             var db = new DataContext();
-
-
                             var quantityval = int.Parse(quantityValue.Text);
                             var uprice = float.Parse(selProduct.Price.ToString());
                             var productnameval = selProduct.ProductName.ToString();
                             var prodid = int.Parse(selProduct.ID.ToString());
-
                             var iniTotal = quantityval * uprice;
                             Price += iniTotal;
 
@@ -236,7 +236,7 @@ namespace Atlas.Pages
 
                                 if (iniitem.Any(p => p.ProductID == id))
                                 {
-                                    MessageBox.Show("Already exists");
+                                    /*MessageBox.Show("Already exists");*/
                                     iniOrder duplicateOrd = iniitem.Where(x => x.ProductID == id).FirstOrDefault();
                                     var requantityval = duplicateOrd.Quantity + quantityval;
                                     duplicateOrd.Quantity = requantityval;
@@ -247,7 +247,7 @@ namespace Atlas.Pages
                                 }
                                 else if (!iniitem.Any(p => p.ProductID == id))
                                 {
-                                    MessageBox.Show("Added! Second");
+                                  //  MessageBox.Show("Added! Second");
                                     iniitem.Add(new iniOrder()
                                     {
                                         ProductID = prodid,
@@ -260,30 +260,31 @@ namespace Atlas.Pages
                                     context.Products.Update(selProduct);
                                     context.SaveChanges();
                                 }
-                                Read();
-
-                               
-
+                                
+                                Read();                                
+                                totalamount.Text = Price.ToString("n2");
                             }
                             else if (selProduct.Stocks == 0)
                             {
+                                
                                 MessageBox.Show("Selected Product is out of stocks!");
+                                Price -= uprice;
+                                
+
                             }
                             else
+                            {                                
                                 MessageBox.Show("Stocks is lower than the quantity required");
-
+                            }                               
                         }
                     }
-
                     else
-                        MessageBox.Show("Please select a Product!");
-
+                        MessageBox.Show("No product Selected.\nPlease select a Product!");
                 }
             }
             catch (Exception)
             {
-
-                MessageBox.Show("Select Product First!");
+              MessageBox.Show("Select Product First!");
             }
 
 
@@ -301,11 +302,12 @@ namespace Atlas.Pages
         }
 
         //Goes back
-        private void go_back_btn_click(object sender, RoutedEventArgs e)
+       private void go_back_btn_click(object sender, RoutedEventArgs e)
         {
             Go_Back();
-            AddDelivery gotopage = new AddDelivery();
-            this.NavigationService.Navigate(gotopage);
+            
+            /*AddDelivery gotopage = new AddDelivery();
+            this.NavigationService.Navigate(gotopage);*/
         }
 
         //Selects customer
@@ -330,13 +332,14 @@ namespace Atlas.Pages
                         var productUpdate = context.Products.Single(b => b.ID == item.ProductID);
                         productUpdate.Stocks += cancelOrderQuantity;
                         context.Products.Update(productUpdate);
+                        Price = 0;
+                        totalamount.Text = Price.ToString();
                         iniitem.Remove(item);
                     }
                     context.SaveChanges();
-
-                    MessageBox.Show("Orders cancelled!");
-
+                   // MessageBox.Show("Orders cancelled!");
                     Read();
+                    
                 }
             }
             else if (result == MessageBoxResult.No)
@@ -348,7 +351,8 @@ namespace Atlas.Pages
 
         public void Go_Back()
         {
-            var result = MessageBox.Show("Go back to Choosing Customer?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            var result = MessageBox.Show("Go back to Choosing Customer?\n Your order will not be saved."
+                , "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if (result == MessageBoxResult.Yes)
             {
                 using (DataContext context = new DataContext())
@@ -367,6 +371,10 @@ namespace Atlas.Pages
 
                     Read();
                 }
+                /*Price = 0;
+                totalamount.Text = Price.ToString();*/
+                AddDelivery gotopage = new AddDelivery();
+                this.NavigationService.Navigate(gotopage);
             }
             else if (result == MessageBoxResult.No)
             {
@@ -374,7 +382,6 @@ namespace Atlas.Pages
             }
 
         }
-
 
         public class iniOrder : INotifyPropertyChanged
         {
@@ -399,15 +406,11 @@ namespace Atlas.Pages
             public event PropertyChangedEventHandler PropertyChanged;
             private void RaiseProperChanged([CallerMemberName] string caller = "")
             {
-
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs(caller));
                 }
             }
-
         }
-
     }
-
 }

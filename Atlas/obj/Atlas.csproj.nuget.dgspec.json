@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\JJMC\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj": {}
+    "D:\\Users\\Lenovo\\Desktop\\JESSICA FAYE V\\AtlasProject\\Atlas\\Atlas.csproj": {}
   },
   "projects": {
-    "C:\\Users\\JJMC\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj": {
+    "D:\\Users\\Lenovo\\Desktop\\JESSICA FAYE V\\AtlasProject\\Atlas\\Atlas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\JJMC\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj",
+        "projectUniqueName": "D:\\Users\\Lenovo\\Desktop\\JESSICA FAYE V\\AtlasProject\\Atlas\\Atlas.csproj",
         "projectName": "Atlas",
-        "projectPath": "C:\\Users\\JJMC\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj",
-        "packagesPath": "C:\\Users\\JJMC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\JJMC\\Source\\Repos\\AtlasProject\\Atlas\\obj\\",
+        "projectPath": "D:\\Users\\Lenovo\\Desktop\\JESSICA FAYE V\\AtlasProject\\Atlas\\Atlas.csproj",
+        "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
+        "outputPath": "D:\\Users\\Lenovo\\Desktop\\JESSICA FAYE V\\AtlasProject\\Atlas\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\JJMC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -99,7 +103,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

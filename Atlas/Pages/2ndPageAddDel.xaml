@@ -24,16 +24,17 @@
                 <GradientStop Color="#FF1569B7" Offset="0.500"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Border Height="500" VerticalAlignment="Top" 
+        <Border Height="500" VerticalAlignment="Center" 
               
-                Background="White" Margin="10,-10,-10,0">
-            <ListView x:Name="inventory_list" Margin="412,93,24,0" 
+                Background="White">
+            <ListView x:Name="inventory_list" Margin="426,135,10,0" 
                 SelectionChanged="inventory_list_SelectionChanged" SnapsToDevicePixels="True"
                 VerticalAlignment="Top" 
                 HorizontalContentAlignment="Left"
                 VerticalContentAlignment="Center"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 FlowDirection="LeftToRight" 
-                Height="119">
+                Height="203">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="BorderBrush" Value="LightGray" />
@@ -50,9 +51,9 @@
                             DisplayMemberBinding="{Binding ProductName}"/>
                         <GridViewColumn Header="Price"
                             DisplayMemberBinding="{Binding Price}"/>
-                        <GridViewColumn Header="Category" Width="90" 
+                        <GridViewColumn Header="Category" Width="120" 
                             DisplayMemberBinding="{Binding Category}"/>
-                        <GridViewColumn Header="Stocks"  Width="150" 
+                        <GridViewColumn Header="Stocks"  Width="90" 
                             DisplayMemberBinding="{Binding Stocks}"/>
                     </GridView>
                 </ListView.View>
@@ -62,36 +63,52 @@
 
 
 
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="Delivery/ Add Item" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="25" FontWeight="Normal" FontFamily="Segoe UI"/>
-        <Grid HorizontalAlignment="Left" Height="102" Margin="80,123,0,0" VerticalAlignment="Top" Width="653">
-            <!--<Label Content="Product:" HorizontalAlignment="Left" Margin="398,1,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>-->
-            <!--<Label Content="Total Amount:" HorizontalAlignment="Left" Margin="398,35,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
-            <Label Content="Total No. of Items:" HorizontalAlignment="Left" Margin="399,75,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>-->
-            <!--<TextBox x:Name="amount" HorizontalAlignment="Left" Margin="505,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-            <TextBox x:Name="quantity" HorizontalAlignment="Left" Margin="533,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="14"/>
-            <TextBox x:Name="product" HorizontalAlignment="Left" Margin="465,-2,0,0" VerticalAlignment="Top" Width="176"/>-->
+        <TextBlock HorizontalAlignment="Left" Margin="84,10,0,0" Text="Delivery/ Add Item" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="25" FontWeight="Normal" FontFamily="Segoe UI"/>
+        <Grid HorizontalAlignment="Left" Height="32" Margin="560,443,0,0" VerticalAlignment="Top" Width="267">
+            <Button x:Name="add_btn" Content="Add Parcel" 
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                materialDesign:ButtonAssist.CornerRadius="20"
+                HorizontalAlignment="Left" Margin="167,0,0,0" VerticalAlignment="Center" BorderBrush="{x:Null}" Width="100" Click="add_btn_Click" Background="Black" RenderTransformOrigin="0.24,0.9"/>
+            <Button x:Name="cancel_orders" Content="Cancel Orders" 
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                materialDesign:ButtonAssist.CornerRadius="20"
+                HorizontalAlignment="Left" VerticalAlignment="Center" BorderBrush="{x:Null}" Width="141" Click="cancel_btn_Click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
         </Grid>
         <!--</ComboBox>-->
-        <Button x:Name="add_btn" Content="Add Parcel" 
+        <Button x:Name="back_btn" Content="" 
                 Style="{StaticResource MaterialDesignRaisedButton}"
                 materialDesign:ButtonAssist.CornerRadius="20"
-                HorizontalAlignment="Left" Margin="738,427,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="100" Click="add_btn_Click" Background="Black" RenderTransformOrigin="0.24,0.9"/>
-        <Button x:Name="back_btn" Content="Go Back" 
-                Style="{StaticResource MaterialDesignRaisedButton}"
-                materialDesign:ButtonAssist.CornerRadius="20"
-                HorizontalAlignment="Left" Margin="622,407,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="100" Click="go_back_btn_click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
-        <ComboBox x:Name="Category_Cmbox" Height="29" Text="Category" Margin="620,46,70,425" AutomationProperties.Name="Category" BorderBrush="#FF1264B1" SelectionChanged="Category_Cmbox_SelectionChanged" >
-            <ComboBoxItem Content="Art Materials"/>
-            <ComboBoxItem Content="Books"/>
-            <ComboBoxItem Content="School Supplies"/>
-            <ComboBoxItem Content="Stationary Items"/>
-        </ComboBox>
-        <TextBlock HorizontalAlignment="Left" Margin="505,47,0,0" Text="Products" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="20" FontWeight="Bold" FontFamily="Segoe UI"/>
-        <ListView x:Name="initial_Order" Margin="12,174,448,0"
+                HorizontalAlignment="Left" Margin="1,15,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="92" Click="go_back_btn_click" RenderTransformOrigin="0.545,-8.828" Height="28">
+            <Button.Background>
+                <ImageBrush ImageSource="/images/back.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Grid Height="Auto" Margin="427,100,148,370">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="26*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="22*"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="Category_Cmbox" Height="29" Text="Category" Margin="34,0,0,0" AutomationProperties.Name="Category" BorderBrush="#FF1264B1" SelectionChanged="Category_Cmbox_SelectionChanged" Grid.Column="1" Grid.RowSpan="2" >
+                <ComboBoxItem Content="Art Materials"/>
+                <ComboBoxItem Content="Books"/>
+                <ComboBoxItem Content="School Supplies"/>
+                <ComboBoxItem Content="Stationary Items"/>
+            </ComboBox>
+            <TextBlock HorizontalAlignment="Center" Text="Products" 
+                       TextWrapping="Wrap" VerticalAlignment="Top" 
+                       Foreground="Black" FontSize="18" FontWeight="Bold" 
+                       FontFamily="Segoe UI" Margin="0,3,0,0" Grid.Row="1"/>
+        </Grid>
+        <ListView x:Name="initial_Order" Margin="10,135,450,0"
             SnapsToDevicePixels="True"
             VerticalAlignment="Top" 
             HorizontalContentAlignment="Left"
             VerticalContentAlignment="Center"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             FlowDirection="LeftToRight" 
             Height="203" SelectionChanged="initial_Order_SelectionChanged" >
             <ListView.ItemContainerStyle>
@@ -119,23 +136,26 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock HorizontalAlignment="Left" Margin="427,223,0,0" Text="Quantity" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="20" FontWeight="Bold" FontFamily="Segoe UI"/>
-        <TextBlock HorizontalAlignment="Left" Margin="539,378,0,0" Text="Total Amount: " TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI"/>
-        <TextBlock x:Name="totalamount" Text="0" HorizontalAlignment="Left" Margin="669,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI" Width="151"/>
-        <TextBox x:Name="quantityValue" HorizontalAlignment="Left" Margin="522,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC"/>
-        <Button x:Name="btn_Order" Content="Add to Order" 
-            Style="{StaticResource MaterialDesignRaisedButton}"
-            materialDesign:ButtonAssist.CornerRadius="20"
-            HorizontalAlignment="Left" Margin="738,220,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="116" Background="Black" Click="btn_Order_Click"/>
-        <Button x:Name="cancel_orders" Content="Cancel Orders" 
-            Style="{StaticResource MaterialDesignRaisedButton}"
-            materialDesign:ButtonAssist.CornerRadius="20"
-            HorizontalAlignment="Left" Margin="581,444,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="141" Click="cancel_btn_Click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
-        <Label Content="Selected Customer:" HorizontalAlignment="Left" Margin="29,60,0,0" VerticalAlignment="Top" Height="26" Width="109" RenderTransformOrigin="0.229,0.276"/>
-        <Label x:Name="sel_Customerlbl" Content="" HorizontalAlignment="Left" Margin="143,60,0,0" VerticalAlignment="Top" Height="26" Width="109" RenderTransformOrigin="0.229,0.276"/>
+        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Top" Margin="424,394,0,0">
+            <TextBlock Text="Total Amount: " TextWrapping="Wrap" Foreground="Black" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI"/>
+            <TextBlock x:Name="totalamount" Text="0" TextWrapping="Wrap" Foreground="Black" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI" Width="152"/>
+        </StackPanel>
+        <Grid HorizontalAlignment="Left" Height="32" Margin="427,350,0,0" VerticalAlignment="Top" Width="427">
+            <TextBlock HorizontalAlignment="Left" Text="Quantity" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="Black" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI"/>
+            <TextBox x:Name="quantityValue" HorizontalAlignment="Left" Margin="95,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="175" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC"/>
+            <Button x:Name="btn_Order" Content="Add to Order" 
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                materialDesign:ButtonAssist.CornerRadius="20"
+                HorizontalAlignment="Left" Margin="289,0,0,0" VerticalAlignment="Center" BorderBrush="{x:Null}" Width="116" Background="Black" Click="btn_Order_Click"/>
+        </Grid>
+        <Label Content="Selected Customer:" HorizontalAlignment="Left" Margin="83,60,0,0" VerticalAlignment="Top" Height="26" Width="109" RenderTransformOrigin="0.229,0.276"/>
+        <Label x:Name="sel_Customerlbl" Content="" HorizontalAlignment="Left" Margin="197,60,0,0" VerticalAlignment="Top" Height="26" Width="109" RenderTransformOrigin="0.229,0.276"/>
         <Button x:Name="remove_item" Content="Remove Item" 
             Style="{StaticResource MaterialDesignRaisedButton}"
             materialDesign:ButtonAssist.CornerRadius="20"
-            HorizontalAlignment="Left" Margin="143,385,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="143" Click="remove_item_Click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
+            HorizontalAlignment="Left" Margin="143,349,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="122" Click="remove_item_Click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" 
+                   Text="Order List" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Foreground="Black" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI"/>
     </Grid>
 </Page>

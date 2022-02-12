@@ -19,13 +19,13 @@
         <Border Height="450" VerticalAlignment="Top" 
                 CornerRadius="0 0 250 0" 
                 Background="White" HorizontalAlignment="Stretch">
-            
-            <Button Margin="581,164,208,254" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Click="invoice_click">
-                <materialDesign:PackIcon Kind="Invoice" />
-            </Button>
-        </Border>
 
-        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" Text="Customer Information" 
+
+        </Border>
+        <Button Margin="581,155,208,313" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Click="invoice_click">
+            <materialDesign:PackIcon Kind="Invoice" />
+        </Button>
+        <TextBlock HorizontalAlignment="Left" Margin="273,10,0,0" Text="Parcel Information" 
                    TextWrapping="Wrap" VerticalAlignment="Top" Foreground="#FF1B1616" 
                    FontWeight="Normal" FontSize="25" FontFamily="Segoe UI"/>
         <Grid HorizontalAlignment="Left" Height="227" VerticalAlignment="Top"
@@ -45,17 +45,18 @@
 
         </Grid>
 
-        <DataGrid x:Name="itemsTable" HorizontalAlignment="Left" Height="225" Margin="171,207,0,0"
-            VerticalAlignment="Top" Width="484" 
+        <DataGrid x:Name="itemsTable" HorizontalAlignment="Left" Height="225" Margin="69,207,0,0"
+            VerticalAlignment="Top" Width="586" 
             AutoGenerateColumns="False"
             HorizontalContentAlignment="Left" VerticalContentAlignment="Top" 
             BorderThickness="0,2,0,2" BorderBrush="#FF1569B7" GridLinesVisibility="None" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" IsReadOnly="True" SelectionChanged="itemsTable_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding id}" Header="Product ID"/>
-                <DataGridTextColumn Binding="{Binding productName}" Header="Product Name"/>
-                <DataGridTextColumn Binding="{Binding price}" Header="Price"/>
-                <DataGridTextColumn Binding="{Binding quantity}" Header="Quantity"/>
-                <DataGridTextColumn Binding="{Binding amount}" Header="Total Amount"/>
+
+                <DataGridTextColumn Width="100" Binding="{Binding id}" Header="Product ID"/>
+                <DataGridTextColumn Width="150" Binding="{Binding productName}" Header="Product Name"/>
+                <DataGridTextColumn Width="100" Binding="{Binding price}" Header="Price"/>
+                <DataGridTextColumn Width="100" Binding="{Binding quantity}" Header="Quantity"/>
+                <DataGridTextColumn Width="120" Binding="{Binding amount}" Header="Total Amount"/>
             </DataGrid.Columns>
         </DataGrid>
 

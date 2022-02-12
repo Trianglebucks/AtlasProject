@@ -51,7 +51,10 @@ namespace Atlas.Pages
                         context.SaveChanges();
                     }
                 }
-                MessageBox.Show("Saved!");
+                //MessageBox.Show("Saved!");
+                Inventory gotopage = new Inventory();
+                this.NavigationService.Navigate(gotopage);
+
             }
             else if(result == MessageBoxResult.No)
             {

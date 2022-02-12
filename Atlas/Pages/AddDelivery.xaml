@@ -51,7 +51,7 @@
             HorizontalContentAlignment="Left"
             VerticalContentAlignment="Center"
             FlowDirection="LeftToRight" 
-            Height="307" SelectionChanged="customer_list_SelectionChanged" SelectionMode="Single" AlternationCount="-4" >
+            Height="307" SelectionChanged="customer_list_SelectionChanged" SelectionMode="Single" AlternationCount="-4" ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="BorderBrush" Value="LightGray" />
