@@ -125,6 +125,18 @@ namespace Atlas.Pages
 
                         });
 
+
+                        //deliverylog
+                        context.DelLogitems.Add(new Deliverylog()
+                        {
+                            TrackingNumber = TrackingNum,
+                            CustomerID = customerid,
+                            Address = custaddress,
+                            Amount = custTotal,
+                            Quantity = custQuantity,
+                            OrderDate = orderdate
+                        });
+
                         context.SaveChanges();
                        // MessageBox.Show("Done!");
                         Read();
@@ -143,6 +155,8 @@ namespace Atlas.Pages
                         var totalamt = context.Deliveries.Single(b => b.TrackingNumber == TrackingNum);
 
                         popup.total_amount.Text = '₱' + totalamt.Amount.ToString("n2");
+
+                        
                         popup.ShowDialog();
                         
                     }

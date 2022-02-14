@@ -1,6 +1,7 @@
 ﻿using Atlas.Model_Classes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -70,11 +71,28 @@ namespace Atlas.Pages
                         Color = _color,
                         Category = _category,
                         Stocks = _stocks
-                    }) ;
-                    context.SaveChanges();
-                
-                
+                    });
 
+
+                    context.SaveChanges();
+
+
+                    var max = context.Products.Max(p => p.ID);
+                    var lastrecord = context.Products.FirstOrDefault(x => x.ID == max);
+                    context.InvLogitems.Add(new Inventorylog()
+                    {
+                        ProdID = lastrecord.ID,
+                        ProductName = product,
+                        Brand = _brand,
+                        Price = cost,
+                        Measurement = measure,
+                        Color = _color,
+                        Category = _category,
+                        Stocks = _stocks,
+                        LogActivity = "Add"
+                    }); 
+
+                      context.SaveChanges();
             }
         }
     }

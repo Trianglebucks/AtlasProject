@@ -15,6 +15,7 @@
           "Microsoft.EntityFrameworkCore.Relational": "5.0.13",
           "Microsoft.EntityFrameworkCore.Sqlite": "5.0.13",
           "MySql.Data": "8.0.27",
+          "Notifications.Wpf": "0.1.1",
           "System.Data.SQLite.Core": "1.0.115.5",
           "System.Data.SqlClient": "4.8.3",
           "System.Runtime.Extensions": "4.3.1"
@@ -338,6 +339,14 @@
           "lib/netstandard2.1/ZstdNet.dll": {
             "assemblyVersion": "1.4.5.0",
             "fileVersion": "1.4.5.0"
+          }
+        }
+      },
+      "Notifications.Wpf/0.1.1": {
+        "runtime": {
+          "lib/net461/Notifications.Wpf.dll": {
+            "assemblyVersion": "0.1.1.0",
+            "fileVersion": "0.1.1.0"
           }
         }
       },
@@ -875,6 +884,13 @@
       "sha512": "sha512-Ef+sH12/nGAiF9yLZFkuXh7vtVvEPiLKyZNJiDk+VBULzLcXj0lmfU7qcmWNCSVX5n6zu5jMV+JaNf1C+a+T8g==",
       "path": "mysql.data/8.0.27",
       "hashPath": "mysql.data.8.0.27.nupkg.sha512"
+    },
+    "Notifications.Wpf/0.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uZQeeDXEkk0eQPGEhdNxCuAJ6R6NpCKxlMBFStwAjtXFk8t9j2SjVHvLN/FCr+oCKTkKOJPjOMvaXIS+AE7qxA==",
+      "path": "notifications.wpf/0.1.1",
+      "hashPath": "notifications.wpf.0.1.1.nupkg.sha512"
     },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "type": "package",

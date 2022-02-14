@@ -23,6 +23,7 @@ namespace Atlas.Pages
     {
         public List<CSProduct> products { get; private set; }
         public static  int ID;
+
         //public static string productName;
         //public static float price;
         //public static string measurement;
@@ -54,6 +55,21 @@ namespace Atlas.Pages
                     if (inventory_list.SelectedItems.Count > 0)
                     {
                         CSProduct delProduct = inventory_list.SelectedItem as CSProduct;
+
+
+                        context.InvLogitems.Add(new Inventorylog()
+                        {
+                            ProdID = delProduct.ID,
+                            ProductName = delProduct.ProductName,
+                            Brand = delProduct.Brand,
+                            Price = delProduct.Price,
+                            Measurement = delProduct.Measurement,
+                            Color = delProduct.Color,
+                            Category = delProduct.Category,
+                            Stocks = delProduct.Stocks,
+                            LogActivity = "Delete"
+                        });
+
                         context.Remove(delProduct);
                         context.SaveChanges();
                         Read();
@@ -109,15 +125,48 @@ namespace Atlas.Pages
             /*if (!String.IsNullOrEmpty(SearchField.Text) && Category_Cmbox.SelectedIndex > -1)*/
             if (!String.IsNullOrEmpty(SearchField.Text))
             {
+                ComboBoxItem category = (ComboBoxItem)Category_Cmbox.SelectedItem;
+                ComboBoxItem status = (ComboBoxItem)sortAvailability.SelectedItem;
+
+                string strCategory = category.Content.ToString();
+                string strStatus = status.Content.ToString();
                 using (DataContext context = new DataContext())
                 {
                     //MessageBox.Show("Hello 1");
-                    var input = "'%"+SearchField.Text.ToString()+"%'";
+                    var input =   SearchField.Text.ToString()  + "%" ;
                     /*ComboBoxItem combCategory = (ComboBoxItem)Category_Cmbox.SelectedItem;
                     string category = combCategory.Content.ToString();*/
                     //MessageBox.Show(input);
                     //inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Category = {1}", input, category).ToList();
-                    inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like "+input).ToList();
+
+                    if (strCategory == "All" &&  strStatus == "All")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0}",input).ToList();
+
+                    }
+                    else if (strCategory == "All" && strStatus == "Available")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Stocks > 0", input).ToList();
+
+                    }
+                    else if (strCategory == "All" && strStatus == "Unavailable")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Stocks = 0", input).ToList();
+
+                    }
+                    else if (strCategory == "Art Materials" || strCategory == "Books" || strCategory == "School Supplies" || strCategory == "Stationary Items" && strStatus == "All")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Category = {1}", input, strCategory).ToList();
+
+                    }
+                    else if (strCategory == "Art Materials" || strCategory == "Books" || strCategory == "School Supplies" || strCategory == "Stationary Items" && strStatus == "Available")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Category = {1} AND Stocks > 0", input, strCategory).ToList();
+                    }
+                    else if (strCategory == "Art Materials" || strCategory == "Books" || strCategory == "School Supplies" || strCategory == "Stationary Items" && strStatus == "Unavailable")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Category = {1} AND Stocks = 0", input, strCategory).ToList();
+                    }
                 }
             }
             /*else if(!String.IsNullOrEmpty(SearchField.Text) && Category_Cmbox.SelectedIndex == -1)
@@ -159,7 +208,6 @@ namespace Atlas.Pages
         private void change_availability(object sender, SelectionChangedEventArgs e)
         {
             ComboBoxItem category = (ComboBoxItem)sortAvailability.SelectedItem;
-           
             string strCategory = category.Content.ToString();
             var noStock = 0;
             var db = new DataContext();
@@ -175,6 +223,52 @@ namespace Atlas.Pages
             else
                 inventory_list.ItemsSource = db.Products.FromSqlRaw("Select * from Products").ToList();
 
+        }
+
+        private void search_enter(object sender, KeyEventArgs e)
+        {
+            ComboBoxItem category = (ComboBoxItem)Category_Cmbox.SelectedItem;
+            ComboBoxItem status = (ComboBoxItem)sortAvailability.SelectedItem;
+
+            string strCategory = category.Content.ToString();
+            string strStatus = status.Content.ToString();
+            if (e.Key == Key.Return)
+            {
+                using (DataContext context = new DataContext())
+                {
+                    var input = SearchField.Text.ToString() + "%";
+
+                    if (strCategory == "All" && strStatus == "All")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0}", input).ToList();
+
+                    }
+                    else if (strCategory == "All" && strStatus == "Available")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Stocks > 0", input).ToList();
+
+                    }
+                    else if (strCategory == "All" && strStatus == "Unavailable")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Stocks = 0", input).ToList();
+
+                    }
+                    else if (strCategory == "Art Materials" || strCategory == "Books" || strCategory == "School Supplies" || strCategory == "Stationary Items" && strStatus == "All")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Category = {1}", input, strCategory).ToList();
+
+                    }
+                    else if (strCategory == "Art Materials" || strCategory == "Books" || strCategory == "School Supplies" || strCategory == "Stationary Items" && strStatus == "Available")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Category = {1} AND Stocks > 0", input, strCategory).ToList();
+                    }
+                    else if (strCategory == "Art Materials" || strCategory == "Books" || strCategory == "School Supplies" || strCategory == "Stationary Items" && strStatus == "Unavailable")
+                    {
+                        inventory_list.ItemsSource = context.Products.FromSqlRaw("Select * from Products where ProductName like {0} AND Category = {1} AND Stocks = 0", input, strCategory).ToList();
+                    }
+
+                }
+            }            
         }
     }
 }

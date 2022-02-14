@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Atlas.Model_Classes;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,9 +21,12 @@ namespace Atlas.Pages
     /// </summary>
     public partial class Log : Page
     {
+
         public Log()
         {
+
             InitializeComponent();
+            Read();
         }
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -30,6 +36,64 @@ namespace Atlas.Pages
         private void log_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void inventory_click(object sender, RoutedEventArgs e)
+        {
+            deliverylog_list.Visibility = Visibility.Hidden;
+            inventorylog_list.Visibility = Visibility.Visible;
+            accountlog_list.Visibility = Visibility.Hidden;
+            currentList.Text = "Inventory Log";
+        }
+
+        private void delivery_click(object sender, RoutedEventArgs e)
+        {
+            deliverylog_list.Visibility = Visibility.Visible;
+            inventorylog_list.Visibility = Visibility.Hidden;
+            accountlog_list.Visibility = Visibility.Hidden;
+            currentList.Text = "Sales Log";
+        }
+
+        private void account_click(object sender, RoutedEventArgs e)
+        {
+            deliverylog_list.Visibility = Visibility.Hidden;
+            inventorylog_list.Visibility = Visibility.Hidden;
+            accountlog_list.Visibility = Visibility.Visible;
+            currentList.Text = "Account Log";
+        }
+
+        private void Read()
+        {
+            var db = new DataContext();
+            deliverylog_list.ItemsSource = db.DelLogitems.FromSqlRaw("Select * from DelLogitems").ToList();
+            inventorylog_list.ItemsSource = db.InvLogitems.FromSqlRaw("Select * from InvLogitems").ToList();
+            accountlog_list.ItemsSource = db.AccLogitems.FromSqlRaw("Select * from AccLogitems").ToList();
+        }
+
+        private void delete_btn_Click(object sender, RoutedEventArgs e)
+        {
+            var db = new DataContext();
+            if (deliverylog_list.Visibility == Visibility.Visible)
+            {
+                Deliverylog selectedDel = deliverylog_list.SelectedItem as Deliverylog;
+                db.Remove(selectedDel);
+                db.SaveChanges();
+                Read();
+            }
+            else if (inventorylog_list.Visibility == Visibility.Visible)
+            {
+                Inventorylog selectedDel = inventorylog_list.SelectedItem as Inventorylog;
+                db.Remove(selectedDel);
+                db.SaveChanges();
+                Read();
+            }
+            else if (accountlog_list.Visibility == Visibility.Visible)
+            {
+                Accountlog selectedDel = accountlog_list.SelectedItem as Accountlog;
+                db.Remove(selectedDel);
+                db.SaveChanges();
+                Read();
+            }
         }
     }
 }

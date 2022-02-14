@@ -142,7 +142,7 @@
 
                     <Grid Margin="0 20" HorizontalAlignment="Stretch">
                         <TextBlock Text="Powered By " Margin="5" FontSize="20"/>
-                        <Image Source="/atlas.png" Margin="110,-9,228,112"/>
+                        <Image Source="/images/atlas.png" Margin="110,-9,228,112"/>
 
                     </Grid>
                 </StackPanel>

@@ -412,6 +412,15 @@
           "lib/netstandard2.1/ZstdNet.dll": {}
         }
       },
+      "Notifications.Wpf/0.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net461/Notifications.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net461/Notifications.Wpf.dll": {}
+        }
+      },
       "runtime.native.System.Data.SqlClient.sni/4.7.0": {
         "type": "package",
         "dependencies": {
@@ -1511,6 +1520,20 @@
         "mysql.data.nuspec"
       ]
     },
+    "Notifications.Wpf/0.1.1": {
+      "sha512": "uZQeeDXEkk0eQPGEhdNxCuAJ6R6NpCKxlMBFStwAjtXFk8t9j2SjVHvLN/FCr+oCKTkKOJPjOMvaXIS+AE7qxA==",
+      "type": "package",
+      "path": "notifications.wpf/0.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Notifications.Wpf.dll",
+        "lib/net45/Notifications.Wpf.dll",
+        "lib/net461/Notifications.Wpf.dll",
+        "notifications.wpf.0.1.1.nupkg.sha512",
+        "notifications.wpf.nuspec"
+      ]
+    },
     "runtime.native.System.Data.SqlClient.sni/4.7.0": {
       "sha512": "9kyFSIdN3T0qjDQ2R0HRXYIhS3l5psBzQi6qqhdLz+SzFyEy4sVxNOke+yyYv8Cu8rPER12c3RDjLT8wF3WBYQ==",
       "type": "package",
@@ -2581,30 +2604,26 @@
       "Microsoft.EntityFrameworkCore.Relational >= 5.0.13",
       "Microsoft.EntityFrameworkCore.Sqlite >= 5.0.13",
       "MySql.Data >= 8.0.27",
+      "Notifications.Wpf >= 0.1.1",
       "System.Data.SQLite.Core >= 1.0.115.5",
       "System.Data.SqlClient >= 4.8.3",
       "System.Runtime.Extensions >= 4.3.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lenovo\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\DELL\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\Lenovo\\Desktop\\JESSICA FAYE V\\AtlasProject\\Atlas\\Atlas.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\Source\\Repos\\Atlas\\Atlas\\Atlas.csproj",
       "projectName": "Atlas",
-      "projectPath": "D:\\Users\\Lenovo\\Desktop\\JESSICA FAYE V\\AtlasProject\\Atlas\\Atlas.csproj",
-      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\Lenovo\\Desktop\\JESSICA FAYE V\\AtlasProject\\Atlas\\obj\\",
+      "projectPath": "C:\\Users\\DELL\\Source\\Repos\\Atlas\\Atlas\\Atlas.csproj",
+      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\DELL\\Source\\Repos\\Atlas\\Atlas\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2658,6 +2677,10 @@
             "target": "Package",
             "version": "[8.0.27, )"
           },
+          "Notifications.Wpf": {
+            "target": "Package",
+            "version": "[0.1.1, )"
+          },
           "System.Data.SQLite.Core": {
             "target": "Package",
             "version": "[1.0.115.5, )"
@@ -2681,6 +2704,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[3.1.22, 3.1.22]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
@@ -2689,8 +2718,20 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Notifications.Wpf 0.1.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "Notifications.Wpf",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }

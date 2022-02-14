@@ -16,6 +16,15 @@ using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Security;
 using System.Data.SQLite;
+using Atlas.Model_Classes;
+using System.Globalization;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+
+
 
 namespace Atlas
 {
@@ -24,7 +33,6 @@ namespace Atlas
     /// </summary>
     public partial class MainWindow : Window
     {
-        string dbConnectionString = @"Data Source = AtlasDB.db;Version=3;";
         public MainWindow()
         {
 
@@ -33,41 +41,42 @@ namespace Atlas
         }        
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            SQLiteConnection sqliteCon = new SQLiteConnection(dbConnectionString);
+            
             var Username = txtUsername.Text;
-            var Password = txtPassword.Password;     
-
+            var Password = txtPassword.Password;
             try
             {
-                sqliteCon.Open();
-                string Query = "select * from users where user='" + Username + "' and pass='" + Password + "' ";
-                SQLiteCommand createCommand = new SQLiteCommand(Query, sqliteCon);
-                createCommand.ExecuteNonQuery();
-                SQLiteDataReader dr = createCommand.ExecuteReader();
+                using (DataContext context = new DataContext())
+                {
+                    var account = context.AccInfo.Max(p => p.AccID);
+                    var accverify = context.AccInfo.FirstOrDefault(p => p.AccID == account);
+
+                    if (accverify.User == Username && accverify.Password == Password)
+                    {              
+                        DateTime date = DateTime.Now;
+                        CultureInfo ci = CultureInfo.InvariantCulture;
+
+                        var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
+
+                        context.AccLogitems.Add(new Accountlog()
+                        {
+                            LogDateandTime = orderdate,
+                            LogAccRemarks = "LOGIN"
+                        });
+
+
+                        context.SaveChanges();
+                        SecondWindow secondWindow = new SecondWindow();
+                        secondWindow.Show();
+                        this.Close();
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Username or password is wrong! Who are you!?");
+                    }
+                }
                 
-
-                int count = 0;
-                while (dr.Read())
-                {
-                    count++;
-
-                }
-                if (count == 1)
-                {
-                    SecondWindow secondWindow = new SecondWindow();
-                    secondWindow.Show();
-                    sqliteCon.Close();
-                    this.Close();
-                }
-
-                else
-                {
-                    //MessageBox.Show("Who r u!?");
-                    SecondWindow mainWin = new SecondWindow();
-                    mainWin.Show();
-                    this.Close(); //to close this window
-                }
-               
 
             }
             catch (Exception ex)

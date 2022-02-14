@@ -9,6 +9,16 @@
       d:DesignHeight="500" d:DesignWidth="854"
       Title="Delivery">
 
+    <Page.Resources>
+
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="LightBlue" />
+        </Style>
+
+    </Page.Resources>
+
+
     <Grid Background="#FFE4EBF9">
         <Grid>
             <StackPanel Margin="43,68,563,387" Orientation="Horizontal">

@@ -1,6 +1,8 @@
-﻿using Atlas.Pages;
+﻿using Atlas.Model_Classes;
+using Atlas.Pages;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -73,7 +75,21 @@ namespace Atlas
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
-        {           
+        {
+            var db = new DataContext();
+
+            DateTime date = DateTime.Now;
+            CultureInfo ci = CultureInfo.InvariantCulture;
+
+            var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
+
+            db.AccLogitems.Add(new Accountlog()
+            {
+                LogDateandTime = orderdate,
+                LogAccRemarks = "LOGOUT"
+            });
+
+            db.SaveChanges();
             MainWindow loginWin = new MainWindow();
             loginWin.Show();
             this.Close();

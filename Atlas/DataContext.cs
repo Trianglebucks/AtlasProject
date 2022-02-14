@@ -26,7 +26,12 @@ namespace Atlas
         public DbSet<CSOrderitems> Orderitems { get; set; }
         public DbSet<TopProducts> Topchosen { get; set; }
         public DbSet<Invoicelist> Invoiceitems { get; set; }
+        public DbSet<Inventorylog> InvLogitems { get; set; }
+        public DbSet<Deliverylog> DelLogitems { get; set; }
+        public DbSet<Accountlog> AccLogitems { get; set; }
+        public DbSet<Accounts> AccInfo { get; set; }
 
+        public DbSet<MonthlySales> TopSalesDates { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

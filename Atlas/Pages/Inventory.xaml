@@ -10,6 +10,15 @@
       d:DesignHeight="500" d:DesignWidth="854"
       Title="Inventory">
 
+    <Page.Resources>
+
+        <Style TargetType="{x:Type GridViewColumnHeader}">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="LightBlue" />
+        </Style>
+
+    </Page.Resources>
+    
     <Grid Background="#FFE4EBF9">
         <Grid>
             <Grid Margin="44,68,17,343">
@@ -17,7 +26,7 @@
                     <Label Content="Product Name" Margin="-18,6,404,62"/>
                     <Label Content="Category" Margin="220,6,166,59" VerticalContentAlignment="Top" HorizontalContentAlignment="Left"/>
                     <StackPanel Margin="-24,6,209,0" Orientation="Horizontal">
-                        <TextBox x:Name="SearchField" TextWrapping="Wrap" Width="183" Height="30" Margin="-1,0,0,0" CaretBrush="#FF1569B7" SelectionBrush="Black" AcceptsReturn="True" AutomationProperties.Name="Search" BorderBrush="#FF1264B1"/>
+                        <TextBox x:Name="SearchField" Width="183" Height="30" Margin="-1,0,0,0" CaretBrush="#FF1569B7" SelectionBrush="Black" BorderBrush="#FF1264B1" KeyDown="search_enter"/>
                         <Button x:Name="search_btn" Width="49" Margin="0,0,3,0" BorderBrush="#FF1264B1" Foreground="#FF1569B7" Click="search_btn_Click">
                             <Button.Background>
                                 <ImageBrush Stretch="Uniform" ImageSource="/images/search.png"/>
@@ -55,7 +64,7 @@
                     </Button.Background>
                 </Button>
 
-                <ComboBox x:Name="sortAvailability" Height="29" Text="Category" Margin="435,34,182,26" AutomationProperties.Name="Category" BorderBrush="#FF1264B1" SelectionChanged="change_availability">
+                <ComboBox x:Name="sortAvailability" Height="29" Text="Status" Margin="435,34,182,26" AutomationProperties.Name="Status" BorderBrush="#FF1264B1" SelectionChanged="change_availability">
                     <ComboBoxItem Content="All"/>
                     <ComboBoxItem Content="Available"/>
                     <ComboBoxItem Content="Unavailable"/>
