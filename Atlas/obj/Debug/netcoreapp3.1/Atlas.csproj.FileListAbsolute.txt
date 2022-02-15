@@ -708,3 +708,4 @@ C:\Users\DELL\Source\Repos\Atlas\Atlas\obj\Debug\netcoreapp3.1\Atlas.csproj.Copy
 C:\Users\DELL\Source\Repos\Atlas\Atlas\obj\Debug\netcoreapp3.1\Atlas.dll
 C:\Users\DELL\Source\Repos\Atlas\Atlas\obj\Debug\netcoreapp3.1\Atlas.pdb
 C:\Users\DELL\Source\Repos\Atlas\Atlas\obj\Debug\netcoreapp3.1\Atlas.genruntimeconfig.cache
+C:\Users\JJMC\Source\Repos\AtlasProject\Atlas\bin\Debug\netcoreapp3.1\Notifications.Wpf.dll

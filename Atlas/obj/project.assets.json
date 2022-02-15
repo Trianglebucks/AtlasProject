@@ -2611,19 +2611,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {}
+    "C:\\Users\\JJMC\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\Source\\Repos\\Atlas\\Atlas\\Atlas.csproj",
+      "projectUniqueName": "C:\\Users\\JJMC\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj",
       "projectName": "Atlas",
-      "projectPath": "C:\\Users\\DELL\\Source\\Repos\\Atlas\\Atlas\\Atlas.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\Source\\Repos\\Atlas\\Atlas\\obj\\",
+      "projectPath": "C:\\Users\\JJMC\\Source\\Repos\\AtlasProject\\Atlas\\Atlas.csproj",
+      "packagesPath": "C:\\Users\\JJMC\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\JJMC\\Source\\Repos\\AtlasProject\\Atlas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\JJMC\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2704,12 +2704,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.1.22, 3.1.22]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"

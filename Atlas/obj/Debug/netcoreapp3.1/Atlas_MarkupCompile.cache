@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\DELL\Source\Repos\Atlas\Atlas\obj\Debug\netcoreapp3.1\
+C:\Users\JJMC\Source\Repos\AtlasProject\Atlas\obj\Debug\netcoreapp3.1\
 Atlas
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
-C:\Users\DELL\Source\Repos\Atlas\Atlas\App.xaml
+C:\Users\JJMC\Source\Repos\AtlasProject\Atlas\App.xaml
 18-416133262
 1-1033076301
 31-1712134290
-226-649664453
+226-1761060431
 Invoice.xaml;MainWindow.xaml;Pages\2ndPageAddDel.xaml;Pages\AddCustomer.xaml;Pages\AddDelivery.xaml;Pages\AddInventory.xaml;Pages\Customer.xaml;Pages\Delivery.xaml;Pages\Delivery_Item_List.xaml;Pages\EditInventory.xaml;Pages\Home.xaml;Pages\Inventory.xaml;Pages\Log.xaml;Pages\Settings.xaml;SecondWindow.xaml;Styles\FontStyle.xaml;Styles\MenuButtonStyle.xaml;Styles\ToolTipStyle.xaml;
 
 False

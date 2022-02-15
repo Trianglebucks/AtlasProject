@@ -16,6 +16,7 @@
     </Page.Resources>
 
     <Grid>
+
         <Grid.Background>
             <LinearGradientBrush StartPoint="0.1,0" EndPoint="0.9,1">
                 <GradientStop Color="#FF99A4D6" Offset="0.782"/>
@@ -25,7 +26,8 @@
         </Grid.Background>
         <Border Height="450" VerticalAlignment="Top" 
                 CornerRadius="0 0 250 0" 
-                Background="White" Margin="0,-2,0,0"/>
+                Background="White" Margin="0,-2,0,0">
+        </Border>
         <TextBlock HorizontalAlignment="Left" Margin="80,17,0,0" Text="Customer List"
                    TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" 
                    FontSize="22" FontWeight="Normal" FontFamily="Segoe UI"/>
@@ -43,14 +45,19 @@
                 <ImageBrush ImageSource="/images/back.png" Stretch="Fill"/>
             </Button.Background>
         </Button>
-
-        <ListView x:Name="customer_list" Margin="188,84,181,0" 
+        <TextBox x:Name="SearchField" CaretBrush="#FF1569B7" SelectionBrush="Black" BorderBrush="#FF1264B1" Margin="430,70,240,398"/>
+        <Button x:Name="search_btn" Width="49" Margin="619,70,186,398" BorderBrush="#FF1264B1" Foreground="#FF1569B7" Click="Search">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/images/search.png"/>
+            </Button.Background>
+        </Button>
+        <ListView x:Name="customer_list" Margin="184,107,184,0" 
                       SnapsToDevicePixels="True"
                       VerticalAlignment="Top" 
                       HorizontalContentAlignment="Left"
                       VerticalContentAlignment="Center"
                       FlowDirection="LeftToRight" 
-                      Height="278" SelectionChanged="customer_list_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
+                      Height="247" SelectionChanged="customer_list_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="BorderBrush" Value="LightGray" />

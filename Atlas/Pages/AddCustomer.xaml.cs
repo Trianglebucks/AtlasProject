@@ -32,9 +32,17 @@ namespace Atlas.Pages
 
         private void add_click(object sender, RoutedEventArgs e)
         {
-            Create();
-            Customer gotopage = new Customer();
-            this.NavigationService.Navigate(gotopage);
+            if (!String.IsNullOrEmpty(customer_name.Text) && !String.IsNullOrEmpty(address.Text) && !String.IsNullOrEmpty(contactnumber.Text))
+            {
+                Create();
+                MessageBox.Show("Customer successfully added!");
+                Customer gotopage = new Customer();
+                this.NavigationService.Navigate(gotopage);
+            }
+            else
+                MessageBox.Show("Please fill the necessary information.");
+
+            
         }
 
         public void Create()
@@ -56,9 +64,10 @@ namespace Atlas.Pages
                         CustomerName = name,
                         Address = custaddress,
                         ContactNumber = number
-                    }) ;
+                    });
                     context.SaveChanges();
                 }
+                
 
             }
         }

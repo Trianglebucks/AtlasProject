@@ -25,8 +25,15 @@
         </Grid.Background>
         <Border Height="450" VerticalAlignment="Top" 
                 CornerRadius="0 0 250 0" 
-                Background="White" Margin="0,-2,0,0"/>
+                Background="White" Margin="0,-2,0,0">
+              </Border>
+        <TextBox x:Name="SearchField" CaretBrush="#FF1569B7" SelectionBrush="Black" BorderBrush="#FF1264B1" Margin="367,72,303,396"/>
 
+        <Button x:Name="search_btn" Width="49" Margin="556,74,249,394" BorderBrush="#FF1264B1" Foreground="#FF1569B7" Click="Search">
+            <Button.Background>
+                <ImageBrush Stretch="Uniform" ImageSource="/images/search.png"/>
+            </Button.Background>
+        </Button>
         <TextBlock HorizontalAlignment="Left" Margin="80,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="25" FontWeight="Normal" FontFamily="Segoe UI" Width="258" Height="43"><Run Text="Choose a customer"/><LineBreak/><Run/></TextBlock>
         <!--<Grid HorizontalAlignment="Left" Height="102" Margin="80,123,0,0" VerticalAlignment="Top" Width="653">
             <Label Content="Product:" HorizontalAlignment="Left" Margin="398,1,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>-->

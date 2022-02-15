@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Atlas",
+    "\\Atlas\\Pages"
   ],
-  "SelectedNode": "\\Atlas.sln",
+  "SelectedNode": "\\Atlas\\Pages\\Log.xaml",
   "PreviewInSolutionExplorer": false
 }

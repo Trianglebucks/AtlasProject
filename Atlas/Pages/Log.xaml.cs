@@ -44,6 +44,7 @@ namespace Atlas.Pages
             inventorylog_list.Visibility = Visibility.Visible;
             accountlog_list.Visibility = Visibility.Hidden;
             currentList.Text = "Inventory Log";
+            delete_btn.IsEnabled = false;
         }
 
         private void delivery_click(object sender, RoutedEventArgs e)
@@ -52,6 +53,7 @@ namespace Atlas.Pages
             inventorylog_list.Visibility = Visibility.Hidden;
             accountlog_list.Visibility = Visibility.Hidden;
             currentList.Text = "Sales Log";
+            
         }
 
         private void account_click(object sender, RoutedEventArgs e)
@@ -60,6 +62,7 @@ namespace Atlas.Pages
             inventorylog_list.Visibility = Visibility.Hidden;
             accountlog_list.Visibility = Visibility.Visible;
             currentList.Text = "Account Log";
+            delete_btn.IsEnabled = false;
         }
 
         private void Read()
@@ -69,12 +72,13 @@ namespace Atlas.Pages
             inventorylog_list.ItemsSource = db.InvLogitems.FromSqlRaw("Select * from InvLogitems").ToList();
             accountlog_list.ItemsSource = db.AccLogitems.FromSqlRaw("Select * from AccLogitems").ToList();
         }
-
+        
         private void delete_btn_Click(object sender, RoutedEventArgs e)
         {
             var db = new DataContext();
             if (deliverylog_list.Visibility == Visibility.Visible)
             {
+                
                 Deliverylog selectedDel = deliverylog_list.SelectedItem as Deliverylog;
                 db.Remove(selectedDel);
                 db.SaveChanges();
@@ -94,6 +98,12 @@ namespace Atlas.Pages
                 db.SaveChanges();
                 Read();
             }
+        }
+
+        private void deliverylog_list_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            
+                delete_btn.IsEnabled = true;
         }
     }
 }

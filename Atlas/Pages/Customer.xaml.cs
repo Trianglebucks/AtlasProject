@@ -76,5 +76,23 @@ namespace Atlas.Pages
             }
             
         }
+
+       
+
+        private void Search(object sender, RoutedEventArgs e)
+        {
+            using(DataContext context = new DataContext())
+            {
+                if (!String.IsNullOrEmpty(SearchField.Text))
+                {
+                    var toSearch = SearchField.Text + "%";
+                    customer_list.ItemsSource = context.Customers.FromSqlRaw("SELECT * FROM Customers WHERE CustomerName like {0}", toSearch).ToList();
+
+                }
+                else
+                    Read();
+            }
+           
+        }
     }
 }
