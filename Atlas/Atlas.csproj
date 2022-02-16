@@ -115,7 +115,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="5.0.13" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.13" />
     <PackageReference Include="MySql.Data" Version="8.0.27" />
-    <PackageReference Include="Notifications.Wpf" Version="0.1.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115.5" />
     <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
