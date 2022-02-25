@@ -44,7 +44,7 @@
                 </Button.Background>
             </Button>
 
-            <Button x:Name="print_btn" Content="" HorizontalAlignment="Left" Margin="732,437,0,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" Height="34">
+            <Button x:Name="print_btn" Content="" HorizontalAlignment="Left" Margin="732,437,0,0" VerticalAlignment="Top" Width="70" BorderBrush="{x:Null}" Height="34" Click="print_btn_Click">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/images/print.png" RenderOptions.BitmapScalingMode="Fant"/>
                 </Button.Background>
@@ -98,7 +98,7 @@
                       VerticalContentAlignment="Center"
                       FlowDirection="LeftToRight"
                       ScrollViewer.HorizontalScrollBarVisibility="Visible"
-                      Visibility="Hidden">
+                      Visibility="Hidden" PreviewMouseLeftButtonDown="deliverylog_list_PreviewMouseLeftButtonDown">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="BorderBrush" Value="LightGray" />
@@ -127,6 +127,8 @@
                                     DisplayMemberBinding="{Binding Category}"/>
                         <GridViewColumn Header="Stocks" Width="120" 
                                     DisplayMemberBinding="{Binding Stocks}"/>
+                        <GridViewColumn Header="Defectives" Width="120" 
+                                    DisplayMemberBinding="{Binding Defectives}"/>
                         <GridViewColumn Header="LogActivity" Width="120" 
                                     DisplayMemberBinding="{Binding LogActivity}"/>
                     </GridView>
@@ -139,7 +141,7 @@
                       VerticalContentAlignment="Center"
                       FlowDirection="LeftToRight"
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                      Visibility="Hidden">
+                      Visibility="Hidden" PreviewMouseLeftButtonDown="deliverylog_list_PreviewMouseLeftButtonDown">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Setter Property="BorderBrush" Value="LightGray" />

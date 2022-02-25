@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Atlas.Model_Classes;
+using Atlas.Pages;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 
@@ -25,6 +26,6 @@ namespace Atlas
 
         }
 
-  
+   
     }
 }

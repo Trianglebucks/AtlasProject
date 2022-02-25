@@ -60,9 +60,10 @@ namespace Atlas.Pages
                 var _brand = brand.Text;
 
 
+
                 //if (product != null && cost != null && _color != null && _category != null && _status != null && _stocks != null)
-                
-                    context.Products.Add(new CSProduct()
+
+                context.Products.Add(new CSProduct()
                     {
                         ProductName = product,
                         Brand = _brand,
@@ -70,7 +71,8 @@ namespace Atlas.Pages
                         Measurement = measure,
                         Color = _color,
                         Category = _category,
-                        Stocks = _stocks
+                        Stocks = _stocks,
+                        Defectives = 0
                     });
 
 
@@ -89,6 +91,7 @@ namespace Atlas.Pages
                         Color = _color,
                         Category = _category,
                         Stocks = _stocks,
+                        Defectives = 0,
                         LogActivity = "Add"
                     }); 
 

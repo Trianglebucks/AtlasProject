@@ -30,5 +30,8 @@ namespace Atlas.Model_Classes
         [Required]
         public int Stocks { get; set; }
 
+        [Required]
+        public int Defectives { get; set; }
+
     }
 }

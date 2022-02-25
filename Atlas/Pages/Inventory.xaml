@@ -69,6 +69,17 @@
                     <ComboBoxItem Content="Available"/>
                     <ComboBoxItem Content="Unavailable"/>
                 </ComboBox>
+                <Button x:Name="defectives_btn" IsEnabled="False" Margin="734,0,-1,57" BorderBrush="{x:Null}"
+                    Click="defectives_btn_click" ClipToBounds="True" BorderThickness="0,0,0,0" ToolTip="Add">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/box.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="refresh" IsEnabled="True" Margin="676,0,57,57" BorderBrush="{x:Null}" ClipToBounds="True" BorderThickness="0,0,0,0" ToolTip="Add" Click="refresh_click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/images/refresh.png" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
             </Grid>
             
             <ListView x:Name="inventory_list" Margin="10,157,10,0" SnapsToDevicePixels="True" Height="320"
@@ -93,14 +104,16 @@
                                     DisplayMemberBinding="{Binding Brand}"/>
                         <GridViewColumn Header="Color"  Width="100" 
                                     DisplayMemberBinding="{Binding Color}"/>
-                        <GridViewColumn Header="Measurement"  Width="150" 
+                        <GridViewColumn Header="Measurement"  Width="120" 
                                     DisplayMemberBinding="{Binding Measurement}"/>
                         <GridViewColumn Header="Price" Width="100" 
                                     DisplayMemberBinding="{Binding Price}"/>
                         <GridViewColumn Header="Category" Width="130" 
                                     DisplayMemberBinding="{Binding Category}"/>
-                        <GridViewColumn Header="Stocks"  Width="120" 
+                        <GridViewColumn Header="Stocks"  Width="80" 
                                     DisplayMemberBinding="{Binding Stocks}"/>
+                        <GridViewColumn Header="Defectives"  Width="80" 
+                                    DisplayMemberBinding="{Binding Defectives}"/>
                     </GridView>
                 </ListView.View>
             </ListView>

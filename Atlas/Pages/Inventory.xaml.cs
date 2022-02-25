@@ -21,8 +21,10 @@ namespace Atlas.Pages
     /// </summary>
     public partial class Inventory : Page
     {
+     
         public List<CSProduct> products { get; private set; }
         public static  int ID;
+        public static CSProduct selectedPro;
 
         //public static string productName;
         //public static float price;
@@ -67,6 +69,7 @@ namespace Atlas.Pages
                             Color = delProduct.Color,
                             Category = delProduct.Category,
                             Stocks = delProduct.Stocks,
+                            Defectives = delProduct.Defectives,
                             LogActivity = "Delete"
                         });
 
@@ -110,6 +113,7 @@ namespace Atlas.Pages
         {
             delete_btn.IsEnabled = true;
             edit_btn.IsEnabled = true;
+            defectives_btn.IsEnabled = true;
         }
 
         public void Read()
@@ -269,6 +273,29 @@ namespace Atlas.Pages
 
                 }
             }            
+        }
+
+        private void defectives_btn_click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Defectives popup = new Defectives();
+                selectedPro = inventory_list.SelectedItem as CSProduct;
+                popup.cur_item.Content = selectedPro.Brand + " - " + selectedPro.ProductName;
+                popup.def_quantity.Text = selectedPro.Defectives.ToString();
+                popup.ShowDialog();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Please select a Product!");
+            }
+            
+        }
+
+        private void refresh_click(object sender, RoutedEventArgs e)
+        {
+            Read();
         }
     }
 }

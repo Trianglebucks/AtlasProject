@@ -52,8 +52,7 @@ namespace Atlas.Pages
             deliverylog_list.Visibility = Visibility.Visible;
             inventorylog_list.Visibility = Visibility.Hidden;
             accountlog_list.Visibility = Visibility.Hidden;
-            currentList.Text = "Sales Log";
-            
+            currentList.Text = "Sales Log";         
         }
 
         private void account_click(object sender, RoutedEventArgs e)
@@ -104,6 +103,59 @@ namespace Atlas.Pages
         {
             
                 delete_btn.IsEnabled = true;
+        }
+
+        private void print_btn_Click(object sender, RoutedEventArgs e)
+        {
+            var db = new DataContext();
+            if (deliverylog_list.Visibility == Visibility.Visible)
+            {
+                try
+                {
+                    this.IsEnabled = false;
+                    PrintDialog printDialog = new PrintDialog();
+                    if (printDialog.ShowDialog() == true)
+                    {
+                        printDialog.PrintVisual(deliverylog_list, "Invoice");
+                    }
+                }
+                finally
+                {
+                    this.IsEnabled = true;
+                }
+            }
+            else if (inventorylog_list.Visibility == Visibility.Visible)
+            {
+                try
+                {
+                    this.IsEnabled = false;
+                    PrintDialog printDialog = new PrintDialog();
+                    if (printDialog.ShowDialog() == true)
+                    {
+                        printDialog.PrintVisual(inventorylog_list, "Invoice");
+                    }
+                }
+                finally
+                {
+                    this.IsEnabled = true;
+                }
+            }
+            else if (accountlog_list.Visibility == Visibility.Visible)
+            {
+                try
+                {
+                    this.IsEnabled = false;
+                    PrintDialog printDialog = new PrintDialog();
+                    if (printDialog.ShowDialog() == true)
+                    {
+                        printDialog.PrintVisual(accountlog_list, "Invoice");
+                    }
+                }
+                finally
+                {
+                    this.IsEnabled = true;
+                }
+            }
         }
     }
 }

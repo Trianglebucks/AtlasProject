@@ -50,6 +50,7 @@ namespace Atlas.Pages
                         product.Stocks = int.Parse(_stocks);
 
 
+
                         context.InvLogitems.Add(new Inventorylog()
                         {
                             ProdID = product.ID,
@@ -60,6 +61,7 @@ namespace Atlas.Pages
                             Color = _color,
                             Category = _category,
                             Stocks = int.Parse(_stocks),
+                            Defectives = product.Defectives,
                             LogActivity = "Update"
                         }); ;
 
