@@ -283,19 +283,18 @@ namespace Atlas.Pages
                 selectedPro = inventory_list.SelectedItem as CSProduct;
                 popup.cur_item.Content = selectedPro.Brand + " - " + selectedPro.ProductName;
                 popup.def_quantity.Text = selectedPro.Defectives.ToString();
-                popup.ShowDialog();
+
+                if ((bool)popup.ShowDialog())
+                {
+                    Read();
+                }
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Please select a Product!");
             }
             
         }
 
-        private void refresh_click(object sender, RoutedEventArgs e)
-        {
-            Read();
-        }
     }
 }

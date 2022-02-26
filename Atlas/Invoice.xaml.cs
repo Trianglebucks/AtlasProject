@@ -22,6 +22,7 @@ namespace Atlas
             InitializeComponent();
         }
 
+
         private void Invoice_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -46,7 +47,9 @@ namespace Atlas
 
         private void close_click(object sender, RoutedEventArgs e)
         {
+            DialogResult = true;
             this.Close();
+           
         }
     }
 }

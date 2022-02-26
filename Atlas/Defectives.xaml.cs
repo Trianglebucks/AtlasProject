@@ -66,6 +66,7 @@ namespace Atlas
 
                         db.SaveChanges();
                         MessageBox.Show("Saved!");
+                        DialogResult = true;
                         this.Close();
 
                     }
@@ -92,6 +93,7 @@ namespace Atlas
 
                     db.SaveChanges();
                     MessageBox.Show("Saved!");
+                    DialogResult = true;
                     this.Close();
                 }
                 else if (quanti_Def == product.Defectives)

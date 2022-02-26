@@ -75,11 +75,7 @@
                         <ImageBrush ImageSource="/images/box.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
-                <Button x:Name="refresh" IsEnabled="True" Margin="676,0,57,57" BorderBrush="{x:Null}" ClipToBounds="True" BorderThickness="0,0,0,0" ToolTip="Add" Click="refresh_click">
-                    <Button.Background>
-                        <ImageBrush ImageSource="/images/refresh.png" Stretch="Uniform"/>
-                    </Button.Background>
-                </Button>
+                
             </Grid>
             
             <ListView x:Name="inventory_list" Margin="10,157,10,0" SnapsToDevicePixels="True" Height="320"

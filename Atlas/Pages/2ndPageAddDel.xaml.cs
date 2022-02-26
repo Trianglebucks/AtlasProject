@@ -157,7 +157,13 @@ namespace Atlas.Pages
                         popup.total_amount.Text = '₱' + totalamt.Amount.ToString("n2");
 
                         
-                        popup.ShowDialog();
+                        //popup.ShowDialog();
+
+                        if ((bool)popup.ShowDialog())
+                        {
+                            Delivery gotopage = new Delivery();
+                            this.NavigationService.Navigate(gotopage);
+                        }
                         
                     }
                     else
