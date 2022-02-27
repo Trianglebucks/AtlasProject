@@ -33,6 +33,8 @@ namespace Atlas
 
         public DbSet<MonthlySales> TopSalesDates { get; set; }
 
+        public DbSet<Salesdisplay> SalesDis { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,6 +46,9 @@ namespace Atlas
 
             modelBuilder.Entity<CSOrderitems>()
                .HasKey(c => new { c.TrackingNumber, c.ProductID });
+
+            modelBuilder.Entity<MonthlySales>()
+              .HasKey(c => new { c.ID });
 
             base.OnModelCreating(modelBuilder);
         }

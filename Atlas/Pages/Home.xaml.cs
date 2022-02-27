@@ -83,16 +83,33 @@ namespace Atlas.Pages
                 //                    TotalQuantity = o.Quantity
 
                 //                }).Take(3);
+                if (!db.TopSalesDates.Any())
+                {
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "January", ID = "01", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "February", ID = "02", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "March", ID = "03", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "April", ID = "04", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "May", ID = "05", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "June", ID = "06", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "July", ID = "07", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "August", ID = "08", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "September", ID = "09", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "October", ID = "10", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "November", ID = "11", Amount = 0 });
+                    context.TopSalesDates.Add(new MonthlySales{ Month = "December", ID = "12", Amount = 0 });
+                    MessageBox.Show("Hello");
+                    context.SaveChanges();
+                }
 
                 try
                 {
                     var topitems = context.Topchosen.FromSqlRaw("SELECT ProductName, TotalPrice as TotalSold, Quantity as TotalQuantity FROM (SELECT ProductID, SUM(TotPrice) as TotalPrice, SUM(Quantity) as Quantity FROM Orderitems GROUP by ProductID Order By TotPrice DESC) as a Join Products on a.ProductID = Products.ID Order By TotalPrice DESC LIMIT 3 ");
                     HighestSale.ItemsSource = topitems.ToList();
-                    SalesTable.ItemsSource = context.TopSalesDates.FromSqlRaw("SELECT T.Month, ifnull(SUM(D.Amount), 0) as Amount FROM TopSalesDates as T LEFT JOIN Deliveries as D ON T.MonthNum = substr(OrderDate, 6, 2) Group By T.Month Order By MonthNum; ").ToList();
+                    SalesTable.ItemsSource = context.SalesDis.FromSqlRaw("SELECT T.Month, ifnull(SUM(D.Amount), 0) as Amount FROM TopSalesDates as T LEFT JOIN Deliveries as D ON T.ID = substr(OrderDate, 6, 2) Group By T.Month Order By T.ID;").ToList();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    MessageBox.Show(ex.Message);
                 }          
                
             }
