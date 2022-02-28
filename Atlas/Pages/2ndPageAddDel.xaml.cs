@@ -33,6 +33,8 @@ namespace Atlas.Pages
         public _2ndPageAddDel()
         {
             InitializeComponent();
+            DateTime date = DateTime.Now;
+            dtp_Orderdate.SelectedDate = date;
             Read();
             SelCustomer();
         }
@@ -105,7 +107,7 @@ namespace Atlas.Pages
                         {
                             iniitem.Remove(item);                                                        
                         }
-                        DateTime date = DateTime.Now;
+                        DateTime date = (DateTime)dtp_Orderdate.SelectedDate;
                         CultureInfo ci = CultureInfo.InvariantCulture;
 
                         var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
@@ -319,6 +321,7 @@ namespace Atlas.Pages
             inventory_list.ItemsSource = db.Products.FromSqlRaw("Select * from Products").ToList();
             //initial_Order.ItemsSource = db.Orders.FromSqlRaw("Select * from Orders").ToList();
             initial_Order.ItemsSource = iniitem;
+            
         }
 
         //Goes back

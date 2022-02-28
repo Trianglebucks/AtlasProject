@@ -83,6 +83,9 @@ namespace Atlas.Pages
                 //                    TotalQuantity = o.Quantity
 
                 //                }).Take(3);
+                var curDate = DateTime.Now;
+                var curYear = curDate.ToString().Substring(5, 4);
+
                 if (!db.TopSalesDates.Any())
                 {
                     context.TopSalesDates.Add(new MonthlySales{ Month = "January", ID = "01", Amount = 0 });
@@ -105,7 +108,7 @@ namespace Atlas.Pages
                 {
                     var topitems = context.Topchosen.FromSqlRaw("SELECT ProductName, TotalPrice as TotalSold, Quantity as TotalQuantity FROM (SELECT ProductID, SUM(TotPrice) as TotalPrice, SUM(Quantity) as Quantity FROM Orderitems GROUP by ProductID Order By TotPrice DESC) as a Join Products on a.ProductID = Products.ID Order By TotalPrice DESC LIMIT 3 ");
                     HighestSale.ItemsSource = topitems.ToList();
-                    SalesTable.ItemsSource = context.SalesDis.FromSqlRaw("SELECT T.Month, ifnull(SUM(D.Amount), 0) as Amount FROM TopSalesDates as T LEFT JOIN Deliveries as D ON T.ID = substr(OrderDate, 6, 2) Group By T.Month Order By T.ID;").ToList();
+                    SalesTable.ItemsSource = context.SalesDis.FromSqlRaw("SELECT T.Month, ifnull(SUM(D.Amount), 0) as Amount FROM TopSalesDates as T LEFT JOIN Deliveries as D ON T.ID = substr(OrderDate, 6, 2) AND substr(OrderDate, 1, 4) = {0} Group By T.Month Order By T.ID; ", curYear).ToList();
                 }
                 catch (Exception ex)
                 {
