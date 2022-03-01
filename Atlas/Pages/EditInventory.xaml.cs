@@ -49,21 +49,21 @@ namespace Atlas.Pages
                         product.Category = _category;
                         product.Stocks = int.Parse(_stocks);
 
+                        
 
-
-                        context.InvLogitems.Add(new Inventorylog()
-                        {
-                            ProdID = product.ID,
-                            ProductName = _productName,
-                            Brand = _brand,
-                            Price = float.Parse(_price),
-                            Measurement = product.Measurement,
-                            Color = _color,
-                            Category = _category,
-                            Stocks = int.Parse(_stocks),
-                            Defectives = product.Defectives,
-                            LogActivity = "Update"
-                        }); ;
+                        //context.InvLogitems.Add(new Inventorylog()
+                        //{
+                        //    ProdID = product.ID,
+                        //    ProductName = _productName,
+                        //    Brand = _brand,
+                        //    Price = float.Parse(_price),
+                        //    Measurement = product.Measurement,
+                        //    Color = _color,
+                        //    Category = _category,
+                        //    Stocks = int.Parse(_stocks),
+                        //    Defectives = product.Defectives,
+                        //    LogActivity = "Update"
+                        //}); ;
 
                         context.SaveChanges();
                     }

@@ -48,6 +48,12 @@ namespace Atlas
             {
                 using (DataContext context = new DataContext())
                 {
+                    if (!context.AccInfo.Any())
+                    {
+                       
+                        context.AccInfo.Add(new Accounts { AccID = 1, User = "admin", Password = "1234" });
+                        context.SaveChanges();
+                    }
                     var account = context.AccInfo.Max(p => p.AccID);
                     var accverify = context.AccInfo.FirstOrDefault(p => p.AccID == account);
 

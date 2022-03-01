@@ -71,7 +71,7 @@ namespace Atlas.Pages
                         Measurement = measure,
                         Color = _color,
                         Category = _category,
-                        Stocks = _stocks,
+                        Stocks = _stocks, 
                         Defectives = 0
                     });
 
@@ -79,23 +79,23 @@ namespace Atlas.Pages
                     context.SaveChanges();
 
 
-                    var max = context.Products.Max(p => p.ID);
-                    var lastrecord = context.Products.FirstOrDefault(x => x.ID == max);
-                    context.InvLogitems.Add(new Inventorylog()
-                    {
-                        ProdID = lastrecord.ID,
-                        ProductName = product,
-                        Brand = _brand,
-                        Price = cost,
-                        Measurement = measure,
-                        Color = _color,
-                        Category = _category,
-                        Stocks = _stocks,
-                        Defectives = 0,
-                        LogActivity = "Add"
-                    }); 
+                    //var max = context.Products.Max(p => p.ID);
+                    //var lastrecord = context.Products.FirstOrDefault(x => x.ID == max);
+                    //context.InvLogitems.Add(new Inventorylog()
+                    //{
+                    //    ProdID = lastrecord.ID,
+                    //    ProductName = product,
+                    //    Brand = _brand,
+                    //    Price = cost,
+                    //    Measurement = measure,
+                    //    Color = _color,
+                    //    Category = _category,
+                    //    Stocks = _stocks,
+                    //    Defectives = 0,
+                    //    LogActivity = "Add"
+                    //}); 
 
-                      context.SaveChanges();
+                    //  context.SaveChanges();
             }
         }
     }
