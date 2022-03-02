@@ -13,6 +13,12 @@
 
         <Style TargetType="{x:Type GridViewColumnHeader}">
             <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="LightBlue" />
+        </Style>
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="BorderThickness" Value="1,0,1,1"/>
+            <Setter Property="BorderBrush" Value="LightBlue" />
+            <Setter Property="Foreground" Value="Black"/>
         </Style>
 
     </Page.Resources>
@@ -24,9 +30,7 @@
                 <GradientStop Color="#FF1569B7" Offset="0.500"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Border Height="500" VerticalAlignment="Center" 
-              
-                Background="White">
+        <Border Height="500" VerticalAlignment="Center" Background="WhiteSmoke">
             <ListView x:Name="inventory_list" Margin="426,135,10,0" 
                 SelectionChanged="inventory_list_SelectionChanged" SnapsToDevicePixels="True"
                 VerticalAlignment="Top" 
@@ -47,9 +51,9 @@
                     <GridView>
                         <GridViewColumn Header="ID"
                             DisplayMemberBinding="{Binding ID}"/>
-                        <GridViewColumn Header="Product Name" Width="150" 
+                        <GridViewColumn Header="Product Name" Width="153" 
                             DisplayMemberBinding="{Binding ProductName}"/>
-                        <GridViewColumn Header="Price"
+                        <GridViewColumn Header="Price" Width="40"
                             DisplayMemberBinding="{Binding Price}"/>
                         <GridViewColumn Header="Category" Width="120" 
                             DisplayMemberBinding="{Binding Category}"/>

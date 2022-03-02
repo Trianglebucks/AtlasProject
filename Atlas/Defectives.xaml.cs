@@ -61,11 +61,11 @@ namespace Atlas
                             Category = product.Category,
                             Stocks = product.Stocks,
                             Defectives = product.Defectives,
-                            LogActivity = "Edit"
+                            LogActivity = "Update"
                         });
 
                         db.SaveChanges();
-                        MessageBox.Show("Saved!");
+//                        MessageBox.Show("Saved!");
                         DialogResult = true;
                         this.Close();
 
@@ -92,7 +92,7 @@ namespace Atlas
                     });
 
                     db.SaveChanges();
-                    MessageBox.Show("Saved!");
+                    //MessageBox.Show("Saved!");
                     DialogResult = true;
                     this.Close();
                 }

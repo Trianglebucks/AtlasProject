@@ -48,8 +48,8 @@
                 <DataGrid Name="HighestSale" Height="165" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" SelectionMode="Single" IsReadOnly="True" CanUserResizeColumns="False" AutoGenerateColumns="False" Width="322" ScrollViewer.HorizontalScrollBarVisibility="Disabled" FlowDirection="LeftToRight" HorizontalScrollBarVisibility="Disabled" BorderThickness="0,2,0,0" ClipToBounds="True" GridLinesVisibility="None" BorderBrush="#FF007ACC">
                     <DataGrid.Columns>
                         <materialDesign:DataGridTextColumn Binding="{Binding ProductName}" Header="Product Name" IsReadOnly="True"/>
-                        <materialDesign:DataGridTextColumn Binding="{Binding TotalSold}" Header="Total Sold" IsReadOnly="True"/>
-                        <materialDesign:DataGridTextColumn Binding="{Binding TotalQuantity}" Header="Total Quantity" IsReadOnly="True"/>
+                        <materialDesign:DataGridTextColumn Binding="{Binding TotalSold}" Header="Sales" IsReadOnly="True"/>
+                        <materialDesign:DataGridTextColumn Binding="{Binding TotalQuantity}" Header="Total Sold" IsReadOnly="True"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>
@@ -62,7 +62,8 @@
                 <DataGrid Name ="SalesTable" Height="165" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" SelectionMode="Single" IsReadOnly="True" CanUserResizeColumns="False" AutoGenerateColumns="False" BorderBrush="#FF007ACC" BorderThickness="0,2,0,0" ClipToBounds="True" Cursor="" GridLinesVisibility="None" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled">
                     <DataGrid.Columns>
                         <materialDesign:DataGridTextColumn Binding="{Binding Month}" Header="Month" Width="140" IsReadOnly="True"/>
-                        <materialDesign:DataGridTextColumn Binding="{Binding Amount}" Header="Sales(₱)" IsReadOnly="True"/>
+                        <materialDesign:DataGridTextColumn Binding="{Binding Amount}" Header="Sales" IsReadOnly="True"/>
+                        <!--(₱)-->
                     </DataGrid.Columns>
                 </DataGrid>
             </StackPanel>

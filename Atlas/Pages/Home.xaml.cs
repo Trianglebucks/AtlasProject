@@ -94,10 +94,29 @@ namespace Atlas.Pages
                 {
                     connection.Open();
                     // create trigger
-                    string top3view = "CREATE VIEW IF NOT EXISTS top3view AS SELECT ProductName, TotalPrice as TotalSold, Quantity as TotalQuantity FROM (SELECT ProductID, SUM(TotPrice) as TotalPrice, SUM(Quantity) as Quantity FROM Orderitems GROUP by ProductID Order By TotPrice DESC) as a Join Products on a.ProductID = Products.ID Order By TotalPrice DESC LIMIT 3 ";
-                    string monthlysalesview = "CREATE VIEW IF NOT EXISTS monthlysalesview AS SELECT T.Month, ifnull(SUM(D.Amount), 0) as Amount FROM TopSalesDates as T LEFT JOIN Deliveries as D ON T.ID = substr(OrderDate, 6, 2) AND substr(OrderDate, 1, 4) = '" + curYear + "' Group By T.Month Order By T.ID; ";
-                    string inserttrigger_prod = "CREATE TRIGGER IF NOT EXISTS inserttrigger_prod AFTER INSERT ON Products FOR EACH ROW BEGIN INSERT INTO InvLogitems(ProdID, ProductName, Brand, Price, Measurement, Color, Category, Stocks, Defectives, LogActivity) VALUES(new.ID, new.ProductName, new.Brand, new.Price, new.Measurement, new.Color, new.Category, new.Stocks, new.Defectives, '" + add + "');END";
-                    string updatetrigger_prod = "CREATE TRIGGER IF NOT EXISTS updatetrigger_prod AFTER UPDATE ON Products FOR EACH ROW BEGIN INSERT INTO InvLogitems(ProdID, ProductName, Brand, Price, Measurement, Color, Category, Stocks, Defectives, LogActivity) VALUES(new.ID, new.ProductName, new.Brand, new.Price, new.Measurement, new.Color, new.Category, new.Stocks, new.Defectives, '" + update + "'); END";
+                    string top3view = "CREATE VIEW IF NOT EXISTS top3view AS SELECT ProductName, TotalPrice as TotalSold, Quantity as TotalQuantity " +
+                        "FROM (SELECT ProductID, SUM(TotPrice) as TotalPrice, SUM(Quantity) as Quantity " +
+                        "FROM Orderitems GROUP by ProductID Order By TotPrice DESC) as a Join Products " +
+                        "ON a.ProductID = Products.ID Order By TotalPrice DESC LIMIT 3 ";
+
+                    string monthlysalesview = "CREATE VIEW IF NOT EXISTS monthlysalesview AS " +
+                        "SELECT T.Month, ifnull(SUM(D.Amount), 0) as Amount " +
+                        "FROM TopSalesDates as T LEFT JOIN Deliveries as D ON T.ID = substr(OrderDate, 6, 2) " +
+                        "AND substr(OrderDate, 1, 4) = '" + curYear + "' Group By T.Month Order By T.ID; ";
+
+                    string inserttrigger_prod = "CREATE TRIGGER IF NOT EXISTS inserttrigger_prod " +
+                        "AFTER INSERT ON Products FOR EACH ROW " +
+                        "BEGIN " +
+                        "INSERT INTO InvLogitems(ProdID, ProductName, Brand, Price, Measurement, Color, Category, Stocks, Defectives, LogActivity) " +
+                        "VALUES(new.ID, new.ProductName, new.Brand, new.Price, new.Measurement, new.Color, new.Category, new.Stocks, new.Defectives, '" + add + "');" +
+                        "END";
+
+                    string updatetrigger_prod = "CREATE TRIGGER IF NOT EXISTS updatetrigger_prod " +
+                        "AFTER UPDATE ON Products FOR EACH ROW " +
+                        "BEGIN " +
+                        "INSERT INTO InvLogitems(ProdID, ProductName, Brand, Price, Measurement, Color, Category, Stocks, Defectives, LogActivity) " +
+                        "VALUES(new.ID, new.ProductName, new.Brand, new.Price, new.Measurement, new.Color, new.Category, new.Stocks, new.Defectives, '" + update + "'); " +
+                        "END";
 
                     SQLiteCommand cmd = new SQLiteCommand(top3view, connection);
                     SQLiteCommand cmd2 = new SQLiteCommand(monthlysalesview, connection);
@@ -111,7 +130,7 @@ namespace Atlas.Pages
                 }
                 catch (Exception ex)
                 {
-
+                    MessageBox.Show(ex.Message);
                   
                 }
 

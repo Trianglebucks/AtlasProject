@@ -29,7 +29,7 @@
         <Label Content="Color:" HorizontalAlignment="Left" Margin="79,250,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
         <Label Content="Unit Cost:" HorizontalAlignment="Left" Margin="53,300,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
         <Label Content="Category:" HorizontalAlignment="Left" Margin="481,145,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal"/>
-        <Label Content="Stocks:" HorizontalAlignment="Left" Margin="498,300,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal" HorizontalContentAlignment="Right"/>
+        <Label Content="Stocks:" HorizontalAlignment="Left" Margin="498,250,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Normal" HorizontalContentAlignment="Right"/>
         <TextBox x:Name="product_name" HorizontalAlignment="Left" Margin="141,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC"/>
         <TextBox x:Name="measurement" HorizontalAlignment="Left" Margin="141,193,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC"/>
         <TextBox x:Name="color" HorizontalAlignment="Left" Margin="137,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC"/>
@@ -40,8 +40,9 @@
             <ComboBoxItem Content="School Supplies"/>
             <ComboBoxItem Content="Stationary Items"/>
         </ComboBox>
-        <TextBox x:Name="stocks" HorizontalAlignment="Left" Margin="558,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC"/>
         <TextBox x:Name="brand" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC" Margin="558,196,0,0"/>
+        <TextBox x:Name="stocks" HorizontalAlignment="Left" Margin="558,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC"/>
+
 
         <!--<TextBox HorizontalAlignment="Left" Margin="575,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="84" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC" Grid.ColumnSpan="2"/>-->
         <Button x:Name="add_btn" Content="Add Item" 

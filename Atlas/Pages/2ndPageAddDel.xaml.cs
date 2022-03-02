@@ -152,7 +152,8 @@ namespace Atlas.Pages
                         popup.tracking_no.Text = TrackingNum.ToString();
                         popup.cust_address.Text = custaddress;
                         popup.cust_connum.Text = custconnum;
-                        var invoice_items = context.Invoiceitems.FromSqlRaw("SELECT Brand, Quantity, UnitPrice, TotPrice FROM Orderitems as o JOIN Products as p on o.ProductID = p.ID AND TrackingNumber = {0}", TrackingNum).ToList();
+                        var invoice_items = context.Invoiceitems.FromSqlRaw("SELECT Brand, Quantity, UnitPrice, TotPrice " +
+                            "FROM Orderitems as o JOIN Products as p on o.ProductID = p.ID AND TrackingNumber = {0}", TrackingNum).ToList();
                         popup.Invoice_list.ItemsSource = invoice_items;
                         var totalamt = context.Deliveries.Single(b => b.TrackingNumber == TrackingNum);
 

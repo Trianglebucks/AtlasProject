@@ -66,10 +66,15 @@ namespace Atlas.Pages
 
         private void Read()
         {
+          
             var db = new DataContext();
             deliverylog_list.ItemsSource = db.DelLogitems.FromSqlRaw("Select * from DelLogitems").ToList();
             inventorylog_list.ItemsSource = db.InvLogitems.FromSqlRaw("Select * from InvLogitems").ToList();
+            /*inventorylog_list.ItemsSource = db.InvLogitems.FromSqlRaw("Select ProdID, ProductName, Price, Stocks, Defectives, LogActivity, CURDATE() AS Date" +
+                "FROM InvLogitems").ToList();*/
             accountlog_list.ItemsSource = db.AccLogitems.FromSqlRaw("Select * from AccLogitems").ToList();
+
+            
         }
         
         private void delete_btn_Click(object sender, RoutedEventArgs e)
@@ -79,22 +84,43 @@ namespace Atlas.Pages
             {
                 
                 Deliverylog selectedDel = deliverylog_list.SelectedItem as Deliverylog;
-                db.Remove(selectedDel);
-                db.SaveChanges();
+                try
+                {
+                    db.Remove(selectedDel);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Select an item to be deleted.");
+                }              
                 Read();
             }
             else if (inventorylog_list.Visibility == Visibility.Visible)
             {
                 Inventorylog selectedDel = inventorylog_list.SelectedItem as Inventorylog;
-                db.Remove(selectedDel);
-                db.SaveChanges();
+                try {
+                    db.Remove(selectedDel);
+                    db.SaveChanges();
+                } 
+                catch (Exception) 
+                {
+                    MessageBox.Show("Select an item to be deleted.");
+                }
+                
                 Read();
             }
             else if (accountlog_list.Visibility == Visibility.Visible)
             {
                 Accountlog selectedDel = accountlog_list.SelectedItem as Accountlog;
-                db.Remove(selectedDel);
-                db.SaveChanges();
+                try
+                {
+                    db.Remove(selectedDel);
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Select an item to be deleted.");
+                }
                 Read();
             }
         }

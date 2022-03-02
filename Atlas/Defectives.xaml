@@ -3,16 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:Atlas"
         mc:Ignorable="d"
         Title="Defectives" Height="190" Width="250" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Grid>
-        <Label Content="Defectives of selected Product"/>
-        <TextBox x:Name="def_quantity" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" FontSize="14" BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC" Margin="0,37,0,0"/>
-        <Button x:Name="Save_btn" Content="Save" HorizontalAlignment="Left" Margin="29,148,0,0" VerticalAlignment="Top" Click="Save_btn_Click"/>
-        <Button x:Name="Close_btn" Content="Cancel" HorizontalAlignment="Left" Margin="149,148,0,0" VerticalAlignment="Top" Click="Close_btn_Click"/>
+
+        <Border BorderBrush="#FF7EAFDC" BorderThickness="1,1,1,1"/>
+
+
+        <Label Content="Defectives"/>
+        <TextBox x:Name="def_quantity" HorizontalAlignment="Center" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="148" FontSize="14"
+                 BorderThickness="0,0,0,1" CaretBrush="#FF1569B7" SelectionBrush="#FF7EAFDC" Margin="0,37,0,0"/>
+        <Button x:Name="Save_btn" Content="Save" 
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                materialDesign:ButtonAssist.CornerRadius="20"
+                HorizontalAlignment="Left" Margin="29,148,0,0" 
+                VerticalAlignment="Top" Click="Save_btn_Click" 
+                Background="Black" BorderBrush="Black"/>
+        <Button x:Name="Close_btn" Content="Cancel" 
+                Style="{StaticResource MaterialDesignRaisedButton}"
+                materialDesign:ButtonAssist.CornerRadius="20"
+                HorizontalAlignment="Left" Margin="149,148,0,0" 
+                VerticalAlignment="Top" Click="Close_btn_Click" 
+                BorderBrush="Black" Background="Black"/>
         <Label Content="Current Item:" Margin="0,98,171,67"/>
         <Label x:Name="cur_item" Content="Item" Margin="84,98,10,67"/>
+        <Rectangle HorizontalAlignment="Center" Height="21" VerticalAlignment="Top" Width="250">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#FF7EAFDC" Opacity="0.2"/>
+            </Rectangle.Fill>
+        </Rectangle>
 
     </Grid>
 </Window>
