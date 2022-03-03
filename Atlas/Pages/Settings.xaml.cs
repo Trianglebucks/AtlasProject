@@ -20,7 +20,7 @@ namespace Atlas.Pages
     /// </summary>
     public partial class Settings : Page
     {
-        string dbConnectionString = @"Data Source = AtlasDB.db;Version=3;";
+        string dbConnectionString = @"Data Source=dbv3.db";
         public object Appication { get; private set; }
 
         public Settings()
@@ -46,7 +46,7 @@ namespace Atlas.Pages
             try
             {
                 sqliteCon.Open();
-                string Query = "update users set user='" + Username + "', pass='" + Password + "' where id=1";
+                string Query = "update AccInfo set user='" + Username + "', password='" + Password + "' where accid=1";
                 SQLiteCommand createCommand = new SQLiteCommand(Query, sqliteCon);
                 createCommand.ExecuteNonQuery();
                 MessageBox.Show("Updated!");

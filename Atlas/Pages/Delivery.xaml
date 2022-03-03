@@ -25,7 +25,7 @@
 
                 <TextBox x:Name="SearchBar" TextChanged="SearchBar_TextChanged" TextWrapping="Wrap" Width="183" Height="30" Margin="-1,0,0,0" 
                          CaretBrush="#FF1569B7" SelectionBrush="#FF5BAAF3" AcceptsReturn="True" AutomationProperties.Name="Search" 
-                         BorderBrush="#FF1264B1" KeyDown="search_enter"/>
+                         BorderBrush="#FF1264B1" />
                 <Button x:Name="search_btn" Width="49" Margin="0,0,3,0" BorderBrush="#FF1264B1" Foreground="#FF1569B7" Click="search_btn_Click">
                     <Button.Background>
                         <ImageBrush Stretch="Uniform" ImageSource="/images/search.png"/>
@@ -67,7 +67,7 @@
                         <GridViewColumn Header="Tracking Number" Width="165"  
                                     DisplayMemberBinding="{Binding TrackingNumber}"/>
                         <GridViewColumn Header="Customer" Width="150" 
-                                    DisplayMemberBinding="{Binding CustomerID}"/>
+                                    DisplayMemberBinding="{Binding CustomerName}"/>
                         <GridViewColumn Header="Address" Width="125" 
                                     DisplayMemberBinding="{Binding Address}"/>
                         <GridViewColumn Header="Quantity" Width="120" 

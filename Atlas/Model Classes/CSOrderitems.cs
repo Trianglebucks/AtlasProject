@@ -6,7 +6,7 @@ namespace Atlas.Model_Classes
     public class CSOrderitems
     {
         [Key]
-        public int TrackingNumber { get; set; }
+        public string TrackingNumber { get; set; }
 
         [Key]
         public int ProductID { get; set; }

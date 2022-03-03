@@ -71,7 +71,8 @@ namespace Atlas.Pages
             if (result == MessageBoxResult.Yes)
             {
                 Random rnd = new Random();
-                int TrackingNum = rnd.Next(100000, 199999);
+                int TrackingNumint = rnd.Next(100000000, 999999999);
+                string TrackingNum = "PH" + TrackingNumint.ToString() + "AT";
 
                 using (DataContext context = new DataContext())
                 {
@@ -107,7 +108,7 @@ namespace Atlas.Pages
                         {
                             iniitem.Remove(item);                                                        
                         }
-                        DateTime date = (DateTime)dtp_Orderdate.SelectedDate;
+                        DateTime date = DateTime.Now;
                         CultureInfo ci = CultureInfo.InvariantCulture;
 
                         var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
@@ -120,6 +121,7 @@ namespace Atlas.Pages
                         {
                             TrackingNumber = TrackingNum,
                             CustomerID = customerid,
+                            CustomerName = customername,
                             Address = custaddress,
                             Amount = custTotal,
                             Quantity = custQuantity,

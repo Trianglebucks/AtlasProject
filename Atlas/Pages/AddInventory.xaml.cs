@@ -72,7 +72,7 @@ namespace Atlas.Pages
                         Color = _color,
                         Category = _category,
                         Stocks = _stocks, 
-                        Defectives = 0
+                        Defectives = 0,                   
                     });
 
 

@@ -18,7 +18,7 @@ namespace Atlas.Pages
         public static CSDelivery selectedDel;
 
         public List<CSDelivery> deliveries { get; private set; }
-        public static int TrackingNumber;
+        public static string TrackingNumber;
         public static int CustomerID;
         public static string Address;
         public static int Quantity;
@@ -46,9 +46,10 @@ namespace Atlas.Pages
             using (DataContext context = new DataContext())
             {
                 //deliveries = context.Deliveries.ToList();               
-                deliveries = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();
-                if (deliveries.Count > 0)
-                    delivery_list.ItemsSource = deliveries;
+                //deliveries = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();
+                //if (deliveries.Count > 0)
+                    //delivery_list.ItemsSource = context.Deliveries.ToList();
+                delivery_list.ItemsSource = context.Deliveries.FromSqlRaw("Select * FROM Deliveries ORDER BY OrderDate").ToList();
 
             }
         }
@@ -137,27 +138,27 @@ namespace Atlas.Pages
 
             using (DataContext context = new DataContext())
             {
-                var trackingNumber = SearchBar.Text;
+                var trackingNumber = SearchBar.Text + "%";
                 if (String.IsNullOrEmpty(trackingNumber))
                     delivery_list.ItemsSource = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();
                 else
-                    delivery_list.ItemsSource = context.Deliveries.FromSqlRaw("SELECT * FROM Deliveries WHERE TrackingNumber = {0}", trackingNumber).ToList();
+                    delivery_list.ItemsSource = context.Deliveries.FromSqlRaw("SELECT * FROM Deliveries WHERE TrackingNumber LIKE {0}", trackingNumber).ToList();
             }
         }
-/*
-        private void search_enter(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                using (DataContext context = new DataContext())
-                {
-                    var trackingNumber = SearchBar.Text;
-                    if (String.IsNullOrEmpty(trackingNumber))
-                        delivery_list.ItemsSource = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();
-                    else
-                        delivery_list.ItemsSource = context.Deliveries.FromSqlRaw("SELECT * FROM Deliveries WHERE TrackingNumber = {0}", trackingNumber).ToList();
-                }
-            }
-        }*/
+
+        //private void search_enter(object sender, KeyEventArgs e)
+        //{
+        //    if (e.Key == Key.Return)
+        //    {
+        //        using (DataContext context = new DataContext())
+        //        {
+        //            var trackingNumber = SearchBar.Text;
+        //            if (String.IsNullOrEmpty(trackingNumber))
+        //                delivery_list.ItemsSource = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();
+        //            else
+        //                delivery_list.ItemsSource = context.Deliveries.FromSqlRaw("SELECT * FROM Deliveries WHERE TrackingNumber = {0}", trackingNumber).ToList();
+        //        }
+        //    }
+        //}
     }
 }

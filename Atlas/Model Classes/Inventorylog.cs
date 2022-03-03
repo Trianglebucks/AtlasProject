@@ -19,6 +19,7 @@ namespace Atlas.Model_Classes
         public string Category { get; set; }
         public int Stocks { get; set; }
         public int Defectives { get; set; }
+        public string Date { get; set; }
         public string LogActivity { get; set; }
     }
 }

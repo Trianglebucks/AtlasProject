@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace Atlas.Pages
 {
@@ -57,7 +58,10 @@ namespace Atlas.Pages
                     if (inventory_list.SelectedItems.Count > 0)
                     {
                         CSProduct delProduct = inventory_list.SelectedItem as CSProduct;
+                        DateTime date = DateTime.Now;
+                        CultureInfo ci = CultureInfo.InvariantCulture;
 
+                        var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
 
                         context.InvLogitems.Add(new Inventorylog()
                         {
@@ -70,8 +74,9 @@ namespace Atlas.Pages
                             Category = delProduct.Category,
                             Stocks = delProduct.Stocks,
                             Defectives = delProduct.Defectives,
+                            Date = orderdate,
                             LogActivity = "Delete"
-                        });
+                        }) ;
 
                         context.Remove(delProduct);
                         context.SaveChanges();

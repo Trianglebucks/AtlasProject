@@ -7,12 +7,15 @@ namespace Atlas
     public class CSDelivery
     {
         [Key]
-        public int TrackingNumber{ get; set; }
+        public string TrackingNumber{ get; set; }
 
         public CSCustomer Customer { get; set; }
 
         [ForeignKey("Customer")]
         public int CustomerID { get; set; }
+
+        [Required]
+        public string CustomerName { get; set; }
 
         [Required]
         public string Address { get; set; }

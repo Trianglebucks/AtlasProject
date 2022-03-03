@@ -17,6 +17,7 @@ using Atlas.Model_Classes;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Data.SQLite;
+using System.Globalization;
 
 namespace Atlas.Pages
 {
@@ -88,6 +89,9 @@ namespace Atlas.Pages
                 //                }).Take(3);
                 var curDate = DateTime.Now;
                 var curYear = curDate.ToString("yyyy-MM-dd").Substring(0, 4);
+                CultureInfo ci = CultureInfo.InvariantCulture;
+
+                var orderdate = curDate.ToString("yyyy-MM-dd HH:mm:ss", ci);
                 var add = "Add";
                 var update = "Update";
                 try
@@ -107,25 +111,31 @@ namespace Atlas.Pages
                     string inserttrigger_prod = "CREATE TRIGGER IF NOT EXISTS inserttrigger_prod " +
                         "AFTER INSERT ON Products FOR EACH ROW " +
                         "BEGIN " +
-                        "INSERT INTO InvLogitems(ProdID, ProductName, Brand, Price, Measurement, Color, Category, Stocks, Defectives, LogActivity) " +
-                        "VALUES(new.ID, new.ProductName, new.Brand, new.Price, new.Measurement, new.Color, new.Category, new.Stocks, new.Defectives, '" + add + "');" +
+                        "INSERT INTO InvLogitems(ProdID, ProductName, Brand, Price, Measurement, Color, Category, Stocks, Defectives, LogActivity, Date) " +
+                        "VALUES(new.ID, new.ProductName, new.Brand, new.Price, new.Measurement, new.Color, new.Category, new.Stocks, new.Defectives, '" + add + "', DATETIME('now', 'localtime'));" +
                         "END";
 
                     string updatetrigger_prod = "CREATE TRIGGER IF NOT EXISTS updatetrigger_prod " +
                         "AFTER UPDATE ON Products FOR EACH ROW " +
                         "BEGIN " +
-                        "INSERT INTO InvLogitems(ProdID, ProductName, Brand, Price, Measurement, Color, Category, Stocks, Defectives, LogActivity) " +
-                        "VALUES(new.ID, new.ProductName, new.Brand, new.Price, new.Measurement, new.Color, new.Category, new.Stocks, new.Defectives, '" + update + "'); " +
+                        "INSERT INTO InvLogitems(ProdID, ProductName, Brand, Price, Measurement, Color, Category, Stocks, Defectives, LogActivity, Date) " +
+                        "VALUES(new.ID, new.ProductName, new.Brand, new.Price, new.Measurement, new.Color, new.Category, new.Stocks, new.Defectives, '" + update + "', DATETIME('now', 'localtime')); " +
                         "END";
+
+                    //string delivery_disp = "CREATE VIEW IF NOT EXISTS DeliveryDisp " +
+                    //    "AS SELECT TrackingNumber, CustomerName, C.Address, Quantity, Amount, OrderDate " +
+                    //    "FROM Deliveries as D JOIN Customers as C WHERE ID = CustomerID; " ;
 
                     SQLiteCommand cmd = new SQLiteCommand(top3view, connection);
                     SQLiteCommand cmd2 = new SQLiteCommand(monthlysalesview, connection);
                     SQLiteCommand cmd3 = new SQLiteCommand(inserttrigger_prod, connection);
                     SQLiteCommand cmd4 = new SQLiteCommand(updatetrigger_prod, connection);
+                    //SQLiteCommand cmd5 = new SQLiteCommand(delivery_disp, connection);
                     string returnvalue = (string)cmd.ExecuteScalar();
                     string returnvalue2 = (string)cmd2.ExecuteScalar();
                     string returnvalue3 = (string)cmd3.ExecuteScalar();
                     string returnvalue4 = (string)cmd4.ExecuteScalar();
+                    //string returnvalue5 = (string)cmd5.ExecuteScalar();
                     connection.Close();
                 }
                 catch (Exception ex)

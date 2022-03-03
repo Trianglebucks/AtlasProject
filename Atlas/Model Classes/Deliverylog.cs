@@ -11,7 +11,7 @@ namespace Atlas.Model_Classes
         [Key]
         public int LogDelID { get; set; }
 
-        public int TrackingNumber { get; set; }
+        public string TrackingNumber { get; set; }
 
         public int CustomerID { get; set; }
 
