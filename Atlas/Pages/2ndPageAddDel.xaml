@@ -97,6 +97,7 @@
                 <ColumnDefinition Width="22*"/>
             </Grid.ColumnDefinitions>
             <ComboBox x:Name="Category_Cmbox" Height="29" Text="Category" Margin="34,0,0,0" AutomationProperties.Name="Category" BorderBrush="#FF1264B1" SelectionChanged="Category_Cmbox_SelectionChanged" Grid.Column="1" Grid.RowSpan="2" >
+                <ComboBoxItem Content="All"/>
                 <ComboBoxItem Content="Art Materials"/>
                 <ComboBoxItem Content="Books"/>
                 <ComboBoxItem Content="School Supplies"/>
@@ -158,8 +159,6 @@
             Style="{StaticResource MaterialDesignRaisedButton}"
             materialDesign:ButtonAssist.CornerRadius="20"
             HorizontalAlignment="Left" Margin="143,349,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="122" Click="remove_item_Click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
-        <DatePicker x:Name="dtp_Orderdate" FontSize="18" Height="39" Margin="168,400,548,0" VerticalAlignment="Top" />
-        <TextBlock Text="Order Date:" FontSize="20" Margin="61,406,674,68" />
         <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" 
                    Text="Order List" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Foreground="Black" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI"/>

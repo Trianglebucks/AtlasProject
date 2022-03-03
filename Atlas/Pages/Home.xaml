@@ -74,7 +74,9 @@
             <Image Height="214" Width="488" Source="\images\atlasims.png" 
                        Stretch="Uniform" 
                        HorizontalAlignment="Center" 
-                       VerticalAlignment="Top"/>
+                       VerticalAlignment="Top"
+                       RenderOptions.BitmapScalingMode="HighQuality"
+                    />
         </Grid>
 
     </Grid>

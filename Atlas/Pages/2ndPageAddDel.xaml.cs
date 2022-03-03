@@ -33,8 +33,8 @@ namespace Atlas.Pages
         public _2ndPageAddDel()
         {
             InitializeComponent();
+            Category_Cmbox.Text = "All";
             DateTime date = DateTime.Now;
-            dtp_Orderdate.SelectedDate = date;
             Read();
             SelCustomer();
         }
@@ -54,9 +54,19 @@ namespace Atlas.Pages
 
             string strCategory = category.Content.ToString();
             var db = new DataContext();
-
-            inventory_list.ItemsSource = db.Products.FromSqlRaw("Select * from Products where Category = {0}", strCategory).ToList();
+            if (strCategory == "All")
+            {
+                Read();
+            }
+            else
+                inventory_list.ItemsSource = db.Products.FromSqlRaw("Select * from Products where Category = {0}", strCategory).ToList();
+   
             //MessageBox.Show(category.Content.ToString());
+
+
+
+
+
         }
         private void cancel_btn_Click(object sender, RoutedEventArgs e)
         {
@@ -82,7 +92,10 @@ namespace Atlas.Pages
 
                         int custQuantity = 0;
                         float custTotal = 0;
+                        DateTime date = DateTime.Now;
+                        CultureInfo ci = CultureInfo.InvariantCulture;
 
+                        var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
                         foreach (var eachorder in finOrder)
                         {
                             var finalID = int.Parse(eachorder.ProductID.ToString());
@@ -90,13 +103,16 @@ namespace Atlas.Pages
                             var finalpri = float.Parse(eachorder.Price.ToString());
                             var finaltot = float.Parse(eachorder.Total.ToString());
 
+                            
+
                             context.Orderitems.Add(new CSOrderitems()
                             {
                                 TrackingNumber = TrackingNum,
                                 ProductID = finalID,
                                 Quantity = finalQuan,
                                 UnitPrice = finalpri,
-                                TotPrice = finaltot
+                                TotPrice = finaltot,
+                                OrderDate = orderdate
                             });
 
                             custQuantity += finalQuan;
@@ -108,10 +124,7 @@ namespace Atlas.Pages
                         {
                             iniitem.Remove(item);                                                        
                         }
-                        DateTime date = DateTime.Now;
-                        CultureInfo ci = CultureInfo.InvariantCulture;
-
-                        var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
+                        
                         var customerid = AddDelivery.selectedCus.ID;
                         var custaddress = AddDelivery.selectedCus.Address;
                         var custconnum = AddDelivery.selectedCus.ContactNumber;
@@ -279,7 +292,7 @@ namespace Atlas.Pages
                                         ProductName = productnameval,
                                         Quantity = quantityval,
                                         Price = uprice,
-                                        Total = iniTotal
+                                        Total = iniTotal                                 
                                     });
                                     selProduct.Stocks = selProduct.Stocks - quantityval;
                                     context.Products.Update(selProduct);

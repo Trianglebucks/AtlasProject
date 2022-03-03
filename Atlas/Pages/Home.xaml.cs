@@ -62,7 +62,7 @@ namespace Atlas.Pages
         {
             using (DataContext context = new DataContext())
             {
-                var totalsales = context.Deliveries.Sum(t => t.Amount);
+                var totalsales = context.Orderitems.Sum(t => t.TotPrice);
                 
                 salesCount.Text = totalsales.ToString("#,##0.##");
             }
@@ -101,11 +101,11 @@ namespace Atlas.Pages
                     string top3view = "CREATE VIEW IF NOT EXISTS top3view AS SELECT ProductName, TotalPrice as TotalSold, Quantity as TotalQuantity " +
                         "FROM (SELECT ProductID, SUM(TotPrice) as TotalPrice, SUM(Quantity) as Quantity " +
                         "FROM Orderitems GROUP by ProductID Order By TotPrice DESC) as a Join Products " +
-                        "ON a.ProductID = Products.ID Order By TotalPrice DESC LIMIT 3 ";
+                        "ON a.ProductID = Products.ID Order By TotalPrice DESC LIMIT 5";
 
                     string monthlysalesview = "CREATE VIEW IF NOT EXISTS monthlysalesview AS " +
-                        "SELECT T.Month, ifnull(SUM(D.Amount), 0) as Amount " +
-                        "FROM TopSalesDates as T LEFT JOIN Deliveries as D ON T.ID = substr(OrderDate, 6, 2) " +
+                        "SELECT T.Month, ifnull(SUM(D.TotPrice), 0) as Amount " +
+                        "FROM TopSalesDates as T LEFT JOIN Orderitems as D ON T.ID = substr(OrderDate, 6, 2) " +
                         "AND substr(OrderDate, 1, 4) = '" + curYear + "' Group By T.Month Order By T.ID; ";
 
                     string inserttrigger_prod = "CREATE TRIGGER IF NOT EXISTS inserttrigger_prod " +

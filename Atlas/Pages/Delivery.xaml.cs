@@ -146,19 +146,19 @@ namespace Atlas.Pages
             }
         }
 
-        //private void search_enter(object sender, KeyEventArgs e)
-        //{
-        //    if (e.Key == Key.Return)
-        //    {
-        //        using (DataContext context = new DataContext())
-        //        {
-        //            var trackingNumber = SearchBar.Text;
-        //            if (String.IsNullOrEmpty(trackingNumber))
-        //                delivery_list.ItemsSource = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();
-        //            else
-        //                delivery_list.ItemsSource = context.Deliveries.FromSqlRaw("SELECT * FROM Deliveries WHERE TrackingNumber = {0}", trackingNumber).ToList();
-        //        }
-        //    }
-        //}
+        private void search_enter(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                using (DataContext context = new DataContext())
+                {
+                    var trackingNumber = SearchBar.Text;
+                    if (String.IsNullOrEmpty(trackingNumber))
+                        delivery_list.ItemsSource = context.Deliveries.OrderByDescending(d => d.OrderDate).ToList();
+                    else
+                        delivery_list.ItemsSource = context.Deliveries.FromSqlRaw("SELECT * FROM Deliveries WHERE TrackingNumber = {0}", trackingNumber).ToList();
+                }
+            }
+        }
     }
 }

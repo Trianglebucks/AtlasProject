@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using Atlas.Model_Classes;
 
@@ -41,15 +42,35 @@ namespace Atlas.Pages
                     {
 
                         CSProduct product = context.Products.Find(Inventory.ID);
-                        product.ProductName = _productName;
-                        product.Brand = _brand;
-                        product.Measurement = _measurement;
-                        product.Color = _color;
-                        product.Price = float.Parse(_price);
-                        product.Category = _category;
-                        product.Stocks = int.Parse(_stocks);
-
                         
+                        if (_price.All(char.IsDigit) && _stocks.All(char.IsDigit))
+                        {
+                            product.ProductName = _productName;
+                            product.Brand = _brand;
+                            product.Measurement = _measurement;
+                            product.Color = _color;
+                            product.Price = float.Parse(_price);
+                            product.Category = _category;
+                            product.Stocks = int.Parse(_stocks);
+
+                            context.SaveChanges();
+                            Inventory gotopage = new Inventory();
+                            this.NavigationService.Navigate(gotopage);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Some input are invalid!");
+                        }
+
+                        //product.ProductName = _productName;
+                        //product.Brand = _brand;
+                        //product.Measurement = _measurement;
+                        //product.Color = _color;
+                        //product.Price = float.Parse(_price);
+                        //product.Category = _category;
+                        //product.Stocks = int.Parse(_stocks);
+
+
 
                         //context.InvLogitems.Add(new Inventorylog()
                         //{
@@ -65,12 +86,10 @@ namespace Atlas.Pages
                         //    LogActivity = "Update"
                         //}); ;
 
-                        context.SaveChanges();
+                        //context.SaveChanges();
                     }
                 }
-                //MessageBox.Show("Saved!");
-                Inventory gotopage = new Inventory();
-                this.NavigationService.Navigate(gotopage);
+                //MessageBox.Show("Saved!");           
 
             }
             else if(result == MessageBoxResult.No)

@@ -16,7 +16,7 @@ namespace Atlas.Model_Classes
         public float UnitPrice { get; set; }
         public float TotPrice { get; set; }
 
-
+        public string OrderDate { get; set; }
 
     }
 }
