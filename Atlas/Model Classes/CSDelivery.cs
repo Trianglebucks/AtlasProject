@@ -9,9 +9,6 @@ namespace Atlas
         [Key]
         public string TrackingNumber{ get; set; }
 
-        public CSCustomer Customer { get; set; }
-
-        [ForeignKey("Customer")]
         public int CustomerID { get; set; }
 
         [Required]

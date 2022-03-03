@@ -25,7 +25,7 @@ namespace Atlas.Pages
     /// </summary>
     public partial class _2ndPageAddDel : Page
     {
-        private static float Price;
+        private static float Price = 0f;
         //private static float iniTotal;
 
         ObservableCollection<iniOrder> iniitem = new ObservableCollection<iniOrder>();

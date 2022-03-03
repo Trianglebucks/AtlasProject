@@ -30,7 +30,7 @@
             <TextBox x:Name="txtUserEdit" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" Margin="323,220,355,0" BorderThickness="1,1,1,1" Background="White" CaretBrush="#FF1F6EB4" SelectionBrush="#FF87BBEA"/>
             <Label Content="Password:" HorizontalAlignment="Left" Margin="210,270,0,0" VerticalAlignment="Top" FontSize="20" Width="108" Height="33"/>
             <PasswordBox x:Name="txtPassEdit" Margin="323,272,355,190" BorderThickness="1,1,1,1" Background="White" CaretBrush="#FF1F6EB4" SelectionBrush="#FF87BBEA"/>
-            <TextBlock Text="Admin" TextWrapping="WrapWithOverflow" Margin="300,45,300,400" FontSize="35"/>
+            <TextBlock x:Name="user_Name" Text="Admin" TextWrapping="WrapWithOverflow" Margin="300,45,300,400" FontSize="35"/>
             <Label Content="Edit Account" HorizontalAlignment="Left" Margin="206,163,0,0" VerticalAlignment="Top" FontSize="25" FontWeight="Normal"/>
         </Grid>
 

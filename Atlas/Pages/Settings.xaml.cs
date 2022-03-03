@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -26,6 +27,9 @@ namespace Atlas.Pages
         public Settings()
         {
             InitializeComponent();
+            var db = new DataContext();
+            var adminacc = db.AccInfo.Single(b => b.AccID == 1);
+            user_Name.Text = adminacc.User;
         }
 
         private void btnLogout_click(object sender, RoutedEventArgs e)
