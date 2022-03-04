@@ -44,7 +44,7 @@
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Margin="10">
-                            <TextBlock x:Name="cust_address" Text="Customer Address" FontSize="12" Margin="5" HorizontalAlignment="Right"/>
+                            <TextBlock x:Name="cust_address" Text="Customer Address" FontSize="12" Margin="5" HorizontalAlignment="Right" TextWrapping="Wrap"/>
                             <TextBlock x:Name="cust_connum" Text="Contact Number" FontSize="12" Margin="5" HorizontalAlignment="Right"/>
 
 
@@ -141,12 +141,11 @@
                     <Rectangle Fill="Black" Height="1" Margin="5 2" Opacity="0.5"/>
 
                     <Grid Margin="0 20" HorizontalAlignment="Stretch">
-                        <TextBlock Text="Powered By " Margin="5" FontSize="20"/>
-                        <Image Source="/images/atlas.png" Margin="110,-9,228,112"/>
+                        <TextBlock Text="Powered By Atlas Team" Margin="5" FontSize="20"/>
 
                     </Grid>
                 </StackPanel>
-                <Image Source="/images/atlasims.png" Margin="35,10,16,22"/>
+                <Image Source="/images/atlas.png" Margin="192,10,192,22"/>
                 <Image Source="/images/atlaslogo.png" Opacity="0.1" Margin="48,118,78,106" Grid.Row="1" Grid.RowSpan="2"/>
             </Grid>
 

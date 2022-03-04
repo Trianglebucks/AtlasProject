@@ -15,6 +15,10 @@ namespace Atlas.Model_Classes
 
         public string Brand { get; set; }
 
+        public string Measurement { get; set; }
+
+        public string Color { get; set; }
+
         public int Quantity { get; set; }
 
         public float UnitPrice { get; set; }

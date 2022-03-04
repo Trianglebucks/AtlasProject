@@ -27,7 +27,7 @@
         <Border Height="450" VerticalAlignment="Top" 
                 CornerRadius="0 0 250 0" 
                 Background="White" Margin="0,-2,0,0">
-              </Border>
+        </Border>
         <TextBox x:Name="SearchField" CaretBrush="#FF1569B7" SelectionBrush="Black" BorderBrush="#FF1264B1" Margin="367,72,303,396"/>
 
         <Button x:Name="search_btn" Width="49" Margin="556,74,249,394" BorderBrush="#FF1264B1" Foreground="#FF1569B7" Click="Search">
@@ -53,13 +53,13 @@
             </Button.Background>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="108,77,0,0" Text="Customer List" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="Black" FontSize="20" FontWeight="Bold" FontFamily="Segoe UI"/>
-        <ListView x:Name="customer_list" Margin="101,123,249,0" 
+        <ListView x:Name="customer_list" Margin="101,123,103,0" 
             SnapsToDevicePixels="True"
             VerticalAlignment="Top" 
             HorizontalContentAlignment="Left"
             VerticalContentAlignment="Center"
             FlowDirection="LeftToRight" 
-            Height="307" SelectionChanged="customer_list_SelectionChanged" SelectionMode="Single" AlternationCount="-4" ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
+            Height="271" SelectionChanged="customer_list_SelectionChanged" SelectionMode="Single" AlternationCount="-4" ScrollViewer.HorizontalScrollBarVisibility="Hidden" >
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="BorderBrush" Value="LightGray" />
@@ -74,7 +74,7 @@
                         DisplayMemberBinding="{Binding ID}"/>
                     <GridViewColumn Header="Customer Name" Width="150"
                         DisplayMemberBinding="{Binding CustomerName}"/>
-                    <GridViewColumn Header="Address" Width="150"
+                    <GridViewColumn Header="Address" Width="300"
                         DisplayMemberBinding="{Binding Address}"/>
                     <GridViewColumn Header="Contact Number" Width="150"
                         DisplayMemberBinding="{Binding ContactNumber}"/>

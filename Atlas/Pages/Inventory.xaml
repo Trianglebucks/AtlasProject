@@ -71,9 +71,9 @@
                     <ComboBoxItem Content="Unavailable"/>
                 </ComboBox>
                 <Button x:Name="defectives_btn" IsEnabled="False" Margin="734,0,-1,57" BorderBrush="{x:Null}"
-                    Click="defectives_btn_click" ClipToBounds="True" BorderThickness="0,0,0,0" ToolTip="Add">
+                    Click="defectives_btn_click" ClipToBounds="True" BorderThickness="0,0,0,0" ToolTip="Defectives">
                     <Button.Background>
-                        <ImageBrush ImageSource="/images/box.png" Stretch="Uniform"/>
+                        <ImageBrush ImageSource="/images/defective.png" Stretch="Uniform"/>
                     </Button.Background>
                 </Button>
                 

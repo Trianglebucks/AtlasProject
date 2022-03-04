@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Atlas.Model_Classes
@@ -21,7 +22,6 @@ namespace Atlas.Model_Classes
 
         public string Measurement { get; set; }
 
-        [Required]
         public string Color { get; set; }
 
         [Required]

@@ -24,12 +24,14 @@
     <None Remove="images\atlas.png" />
     <None Remove="images\atlasims.png" />
     <None Remove="images\atlaslogo.png" />
+    <None Remove="images\atlasonly.png" />
     <None Remove="images\back.png" />
     <None Remove="images\background.jpg" />
     <None Remove="images\box.png" />
     <None Remove="images\box_inventory.png" />
     <None Remove="images\cart.png" />
     <None Remove="images\customer_list.png" />
+    <None Remove="images\defective.png" />
     <None Remove="images\deleete.png" />
     <None Remove="images\delete.png" />
     <None Remove="images\delete_icon.png" />
@@ -96,6 +98,8 @@
 
   <ItemGroup>
     <Resource Include="images\account.png" />
+    <Resource Include="images\atlasonly.png" />
+    <Resource Include="images\defective.png" />
     <Resource Include="images\deleete.png" />
     <Resource Include="images\print.png" />
     <Resource Include="images\R (3).jpg" />

@@ -31,7 +31,7 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Border Height="500" VerticalAlignment="Center" Background="WhiteSmoke">
-            <ListView x:Name="inventory_list" Margin="426,135,10,0" 
+            <ListView x:Name="inventory_list" Margin="311,135,10,0" 
                 SelectionChanged="inventory_list_SelectionChanged" SnapsToDevicePixels="True"
                 VerticalAlignment="Top" 
                 HorizontalContentAlignment="Left"
@@ -49,14 +49,16 @@
                 </ListView.ItemContainerStyle>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID"
-                            DisplayMemberBinding="{Binding ID}"/>
-                        <GridViewColumn Header="Product Name" Width="153" 
+                        <GridViewColumn Header="Brand" Width="100" 
+                            DisplayMemberBinding="{Binding Brand}"/>
+                        <GridViewColumn Header="Product Name" Width="120" 
                             DisplayMemberBinding="{Binding ProductName}"/>
+                        <GridViewColumn Header="Measurement" Width="90" 
+                            DisplayMemberBinding="{Binding Measurement}"/>
+                        <GridViewColumn Header="Color" Width="90" 
+                            DisplayMemberBinding="{Binding Color}"/>
                         <GridViewColumn Header="Price" Width="40"
                             DisplayMemberBinding="{Binding Price}"/>
-                        <GridViewColumn Header="Category" Width="120" 
-                            DisplayMemberBinding="{Binding Category}"/>
                         <GridViewColumn Header="Stocks"  Width="90" 
                             DisplayMemberBinding="{Binding Stocks}"/>
                     </GridView>
@@ -107,7 +109,7 @@
                        Foreground="Black" FontSize="18" FontWeight="Bold" 
                        FontFamily="Segoe UI" Margin="0,3,0,0" Grid.Row="1"/>
         </Grid>
-        <ListView x:Name="initial_Order" Margin="10,135,450,0"
+        <ListView x:Name="initial_Order" Margin="10,135,548,0"
             SnapsToDevicePixels="True"
             VerticalAlignment="Top" 
             HorizontalContentAlignment="Left"
@@ -128,9 +130,9 @@
 
                     <!--<GridViewColumn Header="ID" Width="50"
                         DisplayMemberBinding="{Binding ID}"/>-->
-                    <GridViewColumn Header="Product Name" Width="105"
+                    <GridViewColumn Header="Product Name" Width="100"
                         DisplayMemberBinding="{Binding ProductName}"/>
-                    <GridViewColumn Header="Quantity" Width="150"
+                    <GridViewColumn Header="Qty" Width="50"
                         DisplayMemberBinding="{Binding Quantity}"/>
                     <GridViewColumn Header="Price" Width="70"
                         DisplayMemberBinding="{Binding Price}"/>
@@ -157,7 +159,7 @@
         <Button x:Name="remove_item" Content="Remove Item" 
             Style="{StaticResource MaterialDesignRaisedButton}"
             materialDesign:ButtonAssist.CornerRadius="20"
-            HorizontalAlignment="Left" Margin="143,349,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="122" Click="remove_item_Click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
+            HorizontalAlignment="Left" Margin="97,350,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Width="122" Click="remove_item_Click" Background="Black" RenderTransformOrigin="0.545,-8.828"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,100,0,0" 
                    Text="Order List" TextWrapping="Wrap" VerticalAlignment="Top" 
                    Foreground="Black" FontSize="18" FontWeight="Bold" FontFamily="Segoe UI"/>

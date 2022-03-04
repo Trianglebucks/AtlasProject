@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Atlas.Model_Classes;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -55,6 +57,7 @@ namespace Atlas.Pages
                 createCommand.ExecuteNonQuery();
                 MessageBox.Show("Updated!");
                 sqliteCon.Close();
+
             }
             catch (Exception ex)
             {

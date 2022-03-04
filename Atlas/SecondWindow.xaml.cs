@@ -104,7 +104,6 @@ namespace Atlas
                     LogDateandTime = orderdate,
                     LogAccRemarks = "LOGOUT"
                 });
-
                 db.SaveChanges();
                 MainWindow loginWin = new MainWindow();
                 loginWin.Show();
