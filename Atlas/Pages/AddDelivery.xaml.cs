@@ -29,6 +29,9 @@ namespace Atlas.Pages
     {
         public static CSCustomer selectedCus;
 
+        public delegate void SendBool(bool Valid);
+
+        public static event SendBool onValidsend;
         public AddDelivery()
         {
 
@@ -122,6 +125,7 @@ namespace Atlas.Pages
         {
             if (customer_list.SelectedItems.Count > 0)
             {
+                onValidsend(false);
                 selectedCus = (CSCustomer)customer_list.SelectedItems[0];
                 _2ndPageAddDel gotopage = new _2ndPageAddDel();
 

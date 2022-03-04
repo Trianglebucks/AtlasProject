@@ -130,7 +130,7 @@
 
                         <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter">
-                            <Button x:Name="btnHome" Click="btnHome_click" Background="#FF1569B7" BorderBrush="#FF1569B7" BorderThickness="0,0,0,0" Foreground="#FF1569B7" ClipToBounds="True">
+                            <Button x:Name="btnHome" Click="btnHome_click" Background="#FF1569B7" BorderBrush="#FF1569B7" BorderThickness="0,0,0,0" Foreground="#FF1569B7" ClipToBounds="True" IsEnabled="True">
                                 <StackPanel Orientation="Horizontal"
                                         Width="230">
                                     <Image Source="/images/home.png"
@@ -147,7 +147,7 @@
                                       Margin="0,0,0,15"
                                       MouseEnter="ListViewItem_MouseEnter">
 
-                            <Button x:Name="btnInventory" Click="btnInventory_Click" Background="#FF1569B7" BorderBrush="#FF1569B7" BorderThickness="0,0,0,0" ClipToBounds="True">
+                            <Button x:Name="btnInventory" Click="btnInventory_Click" Background="#FF1569B7" BorderBrush="#FF1569B7" BorderThickness="0,0,0,0" ClipToBounds="True" IsEnabled="True">
                                 <StackPanel Orientation="Horizontal"
                                         Width="230">
                                     <Image Source="/images/box_inventory.png"
@@ -164,7 +164,7 @@
                                       Margin="0,0,0,15"
                                       MouseEnter="ListViewItem_MouseEnter">
 
-                            <Button x:Name="btnDelivery" Click="btnDelivery_click" Background="#FF1569B7" BorderBrush="#FF1569B7" ClipToBounds="True">
+                            <Button x:Name="btnDelivery" Click="btnDelivery_click" Background="#FF1569B7" BorderBrush="#FF1569B7" ClipToBounds="True"  IsEnabled="True">
                                 <StackPanel Orientation="Horizontal"
                                         Width="230">
                                     <Image Source="/images/delivery.png"
@@ -181,7 +181,7 @@
                                       Margin="0,0,0,15"
                                       MouseEnter="ListViewItem_MouseEnter">
 
-                            <Button x:Name="btnLog" Click="btnLog_Click" Background="#FF1569B7" BorderBrush="#FF1569B7" ClipToBounds="True">
+                            <Button x:Name="btnLog" Click="btnLog_Click" Background="#FF1569B7" BorderBrush="#FF1569B7" ClipToBounds="True"  IsEnabled="True">
                                 <StackPanel Orientation="Horizontal"
                                         Width="230">
                                     <Image Source="/images/log_icon.png"
@@ -197,7 +197,7 @@
                         <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15"
                                       MouseEnter="ListViewItem_MouseEnter">
-                            <Button x:Name="btnSettings" Click="btnSettings_Click" Background="#FF1569B7" BorderBrush="#FF1569B7" ClipToBounds="True">
+                            <Button x:Name="btnSettings" Click="btnSettings_Click" Background="#FF1569B7" BorderBrush="#FF1569B7" ClipToBounds="True" IsEnabled="True">
                                 <StackPanel Orientation="Horizontal"
                                         Width="230">
                                     <Image Source="/images/settings_icon.png"
@@ -213,7 +213,7 @@
                         <ListViewItem HorizontalAlignment="Left"
                                       Margin="0,0,0,15"
                                       MouseEnter="ListViewItem_MouseEnter">
-                            <Button x:Name="btnLogout" Click="btnLogout_Click" Background="#FF1569B7" BorderBrush="#FF1569B7" ClipToBounds="True">
+                            <Button x:Name="btnLogout" Click="btnLogout_Click" Background="#FF1569B7" BorderBrush="#FF1569B7" ClipToBounds="True" IsEnabled="True">
                                 <StackPanel Orientation="Horizontal"
                                         Width="230">
                                     <Image

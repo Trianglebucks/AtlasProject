@@ -17,6 +17,7 @@ namespace Atlas.Pages
     {
         public static CSDelivery selectedDel;
 
+        
         public List<CSDelivery> deliveries { get; private set; }
         public static string TrackingNumber;
         public static int CustomerID;
@@ -84,7 +85,8 @@ namespace Atlas.Pages
                     popup.tracking_no.Text = cSDelivery.TrackingNumber.ToString();
                     popup.cust_address.Text = cSDelivery.Address;
                     popup.cust_connum.Text = selCus.ContactNumber;
-                    var invoice_items = context.Invoiceitems.FromSqlRaw("SELECT Brand, Quantity, UnitPrice, TotPrice FROM Orderitems as o JOIN Products as p on o.ProductID = p.ID AND TrackingNumber = {0}", cSDelivery.TrackingNumber).ToList();
+                    var invoice_items = context.Invoiceitems.FromSqlRaw("SELECT Brand ||' '|| ProductName as Brand, Quantity, UnitPrice, TotPrice " +
+                            "FROM Orderitems WHERE TrackingNumber = {0}", cSDelivery.TrackingNumber).ToList();
                     popup.Invoice_list.ItemsSource = invoice_items;
                     var totalamt = context.Deliveries.Single(b => b.TrackingNumber == cSDelivery.TrackingNumber);
 
@@ -101,8 +103,9 @@ namespace Atlas.Pages
 
         private void btnCustomer(object sender, RoutedEventArgs e)
         {
-            Customer gotopage = new Customer();
-            this.NavigationService.Navigate(gotopage);
+            //Customer gotopage = new Customer();
+            //this.NavigationService.Navigate(gotopage);
+            
         }
 
         private void delivery_list_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

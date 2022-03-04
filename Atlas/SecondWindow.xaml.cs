@@ -24,6 +24,9 @@ namespace Atlas
         {
             InitializeComponent();
             Main.Content = new Home();
+            AddDelivery.onValidsend += Disableallbtns;
+            _2ndPageAddDel.onValidsend += Disableallbtns;
+
         }        
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -32,6 +35,16 @@ namespace Atlas
             {
                 DragMove();
             }
+        }
+
+        void Disableallbtns(bool Valid)
+        {
+            btnDelivery.IsEnabled = Valid;
+            btnHome.IsEnabled = Valid;
+            btnInventory.IsEnabled = Valid;
+            btnLog.IsEnabled = Valid;
+            btnLogout.IsEnabled = Valid;
+            btnSettings.IsEnabled = Valid;
         }
 
         private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
@@ -77,22 +90,31 @@ namespace Atlas
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             var db = new DataContext();
-
-            DateTime date = DateTime.Now;
-            CultureInfo ci = CultureInfo.InvariantCulture;
-
-            var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
-
-            db.AccLogitems.Add(new Accountlog()
+            var result = MessageBox.Show("Are you sure you want to logout?"
+               , "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
+            if (result == MessageBoxResult.Yes)
             {
-                LogDateandTime = orderdate,
-                LogAccRemarks = "LOGOUT"
-            });
+                DateTime date = DateTime.Now;
+                CultureInfo ci = CultureInfo.InvariantCulture;
 
-            db.SaveChanges();
-            MainWindow loginWin = new MainWindow();
-            loginWin.Show();
-            this.Close();
+                var orderdate = date.ToString("yyyy-MM-dd HH:mm:ss", ci);
+
+                db.AccLogitems.Add(new Accountlog()
+                {
+                    LogDateandTime = orderdate,
+                    LogAccRemarks = "LOGOUT"
+                });
+
+                db.SaveChanges();
+                MainWindow loginWin = new MainWindow();
+                loginWin.Show();
+                this.Close();
+            }
+            else if (result == MessageBoxResult.No)
+            {
+
+            }
+           
         }
     }
 }

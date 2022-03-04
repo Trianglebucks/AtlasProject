@@ -98,10 +98,12 @@ namespace Atlas.Pages
                 {
                     connection.Open();
                     // create trigger
-                    string top3view = "CREATE VIEW IF NOT EXISTS top3view AS SELECT ProductName, TotalPrice as TotalSold, Quantity as TotalQuantity " +
-                        "FROM (SELECT ProductID, SUM(TotPrice) as TotalPrice, SUM(Quantity) as Quantity " +
-                        "FROM Orderitems GROUP by ProductID Order By TotPrice DESC) as a Join Products " +
-                        "ON a.ProductID = Products.ID Order By TotalPrice DESC LIMIT 5";
+                    //string top3view = "CREATE VIEW IF NOT EXISTS top3view AS SELECT ProductName, TotalPrice as TotalSold, Quantity as TotalQuantity " +
+                    //    "FROM (SELECT ProductID, SUM(TotPrice) as TotalPrice, SUM(Quantity) as Quantity " +
+                    //    "FROM Orderitems GROUP by ProductID Order By TotPrice DESC) as a Join Products " +
+                    //    "ON a.ProductID = Products.ID Order By TotalPrice DESC LIMIT 5";
+
+                    string top3view = "CREATE VIEW IF NOT EXISTS top3view AS SELECT ProductName, SUM(TotPrice) as TotalSold, SUM(Quantity) as TotalQuantity FROM Orderitems GROUP by ProductName Order By TotPrice DESC LIMIT 5;";
 
                     string monthlysalesview = "CREATE VIEW IF NOT EXISTS monthlysalesview AS " +
                         "SELECT T.Month, ifnull(SUM(D.TotPrice), 0) as Amount " +

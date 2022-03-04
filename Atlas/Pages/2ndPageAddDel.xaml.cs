@@ -28,15 +28,22 @@ namespace Atlas.Pages
         private static float Price = 0f;
         //private static float iniTotal;
 
+        public delegate void SendBool(bool Valid);
+
+        public static event SendBool onValidsend;
+
         ObservableCollection<iniOrder> iniitem = new ObservableCollection<iniOrder>();
 
         public _2ndPageAddDel()
         {
+           
             InitializeComponent();
+            
             Category_Cmbox.Text = "All";
             DateTime date = DateTime.Now;
             Read();
             SelCustomer();
+
         }
         private void inventory_list_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -103,12 +110,16 @@ namespace Atlas.Pages
                             var finalpri = float.Parse(eachorder.Price.ToString());
                             var finaltot = float.Parse(eachorder.Total.ToString());
 
-                            
+                            var prodobj = context.Products.Single(b => b.ID == finalID);
+                            var finalbrand = prodobj.Brand;
+                            var finalprodname = prodobj.ProductName;
 
                             context.Orderitems.Add(new CSOrderitems()
                             {
                                 TrackingNumber = TrackingNum,
                                 ProductID = finalID,
+                                Brand = finalbrand,
+                                ProductName = finalprodname,
                                 Quantity = finalQuan,
                                 UnitPrice = finalpri,
                                 TotPrice = finaltot,
@@ -167,8 +178,11 @@ namespace Atlas.Pages
                         popup.tracking_no.Text = TrackingNum.ToString();
                         popup.cust_address.Text = custaddress;
                         popup.cust_connum.Text = custconnum;
-                        var invoice_items = context.Invoiceitems.FromSqlRaw("SELECT Brand, Quantity, UnitPrice, TotPrice " +
-                            "FROM Orderitems as o JOIN Products as p on o.ProductID = p.ID AND TrackingNumber = {0}", TrackingNum).ToList();
+                        //var invoice_items = context.Invoiceitems.FromSqlRaw("SELECT Brand, Quantity, UnitPrice, TotPrice " +
+                        //    "FROM Orderitems as o JOIN Products as p on o.ProductID = p.ID AND TrackingNumber = {0}", TrackingNum).ToList();
+
+                        var invoice_items = context.Invoiceitems.FromSqlRaw("SELECT Brand ||' '|| ProductName as Brand, Quantity, UnitPrice, TotPrice " +
+                            "FROM Orderitems WHERE TrackingNumber = {0}", TrackingNum).ToList();
                         popup.Invoice_list.ItemsSource = invoice_items;
                         var totalamt = context.Deliveries.Single(b => b.TrackingNumber == TrackingNum);
 
@@ -179,8 +193,10 @@ namespace Atlas.Pages
 
                         if ((bool)popup.ShowDialog())
                         {
+                            onValidsend(true);
                             Delivery gotopage = new Delivery();
-                            this.NavigationService.Navigate(gotopage);
+                            this.NavigationService.Navigate(gotopage);                        
+
                         }
                         
                     }
@@ -390,6 +406,7 @@ namespace Atlas.Pages
 
         public void Go_Back()
         {
+            
             var result = MessageBox.Show("Go back to Choosing Customer?\n Your order will not be saved."
                 , "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Exclamation);
             if (result == MessageBoxResult.Yes)
@@ -408,12 +425,16 @@ namespace Atlas.Pages
                     }
                     context.SaveChanges();
 
+
+
                     Read();
                 }
+                onValidsend(true);
                 /*Price = 0;
                 totalamount.Text = Price.ToString();*/
                 AddDelivery gotopage = new AddDelivery();
                 this.NavigationService.Navigate(gotopage);
+               
             }
             else if (result == MessageBoxResult.No)
             {
